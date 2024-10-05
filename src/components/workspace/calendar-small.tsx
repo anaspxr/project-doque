@@ -13,18 +13,33 @@ import {
   isSameDay,
   isToday,
 } from "date-fns";
+import { useCalendarContext } from "@/context/CalenderContext";
 
 const months = [
-  "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
 
 const CalendarSmall: React.FC = () => {
+  const { chosenDate, setChosenDate } = useCalendarContext();
   const [currentMonth, setCurrentMonth] = useState(new Date());
-  const [selectedDate, setSelectedDate] = useState<Date | string | number>("");
   const [isYearPickerOpen, setYearPickerOpen] = useState(false);
   const [isMonthPickerOpen, setMonthPickerOpen] = useState(false);
 
-  const years = Array.from({ length: 10 }, (_, i) => new Date().getFullYear() - 5 + i); // Display last 5, next 5 years
+  const years = Array.from(
+    { length: 10 },
+    (_, i) => new Date().getFullYear() - 5 + i
+  );
 
   const prevMonth = () => setCurrentMonth(subMonths(currentMonth, 1));
   const nextMonth = () => setCurrentMonth(addMonths(currentMonth, 1));
@@ -42,53 +57,57 @@ const CalendarSmall: React.FC = () => {
   };
 
   const renderHeader = () => (
-    <div className="flex justify-between items-center py-3 relative">
-      <button onClick={prevMonth} className="text-gray-500">
-        &#x276E;
-      </button>
-      <div className="text-lg font-medium flex space-x-2">
-        
-        <div className="cursor-pointer" onClick={() => setMonthPickerOpen(!isMonthPickerOpen)}>
-          {format(currentMonth, "MMMM")}
+    <div>
+      <div className="flex justify-end items-center py-3 relative">
+        <button onClick={prevMonth} className="text-gray-500">
+          &#x276E;
+        </button>
+        <div className="text-lg font-medium flex space-x-2">
+          <div
+            className="cursor-pointer"
+            onClick={() => setMonthPickerOpen(!isMonthPickerOpen)}
+          >
+            {format(currentMonth, "MMMM")}
+          </div>
+          <div
+            className="cursor-pointer"
+            onClick={() => setYearPickerOpen(!isYearPickerOpen)}
+          >
+            {format(currentMonth, "yyyy")}
+          </div>
         </div>
-        
-        <div className="cursor-pointer" onClick={() => setYearPickerOpen(!isYearPickerOpen)}>
-          {format(currentMonth, "yyyy")}
-        </div>
+        <button onClick={nextMonth} className="text-gray-500">
+          &#x276F;
+        </button>
+
+        {isMonthPickerOpen && (
+          <div className="absolute top-10 left-1/2 transform -translate-x-1/2 bg-white shadow-md p-2 rounded-lg">
+            {months.map((month, index) => (
+              <div
+                key={index}
+                className="cursor-pointer hover:bg-gray-200 p-2"
+                onClick={() => onMonthSelect(index)}
+              >
+                {month}
+              </div>
+            ))}
+          </div>
+        )}
+
+        {isYearPickerOpen && (
+          <div className="absolute top-10 left-1/2 transform -translate-x-1/2 bg-white shadow-md p-2 rounded-lg">
+            {years.map((year) => (
+              <div
+                key={year}
+                className="cursor-pointer hover:bg-gray-200 p-2"
+                onClick={() => onYearSelect(year)}
+              >
+                {year}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
-      <button onClick={nextMonth} className="text-gray-500">
-        &#x276F;
-      </button>
-
-      
-      {isMonthPickerOpen && (
-        <div className="absolute top-10 left-1/2 transform -translate-x-1/2 bg-white shadow-md p-2 rounded-lg">
-          {months.map((month, index) => (
-            <div
-              key={index}
-              className="cursor-pointer hover:bg-gray-200 p-2"
-              onClick={() => onMonthSelect(index)}
-            >
-              {month}
-            </div>
-          ))}
-        </div>
-      )}
-
-      
-      {isYearPickerOpen && (
-        <div className="absolute top-10 left-1/2 transform -translate-x-1/2 bg-white shadow-md p-2 rounded-lg">
-          {years.map((year) => (
-            <div
-              key={year}
-              className="cursor-pointer hover:bg-gray-200 p-2"
-              onClick={() => onYearSelect(year)}
-            >
-              {year}
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 
@@ -129,13 +148,13 @@ const CalendarSmall: React.FC = () => {
             className={`py-2 text-center cursor-pointer ${
               !isSameMonth(day, monthStart)
                 ? "text-gray-300"
-                : isSameDay(day, selectedDate)
+                : isSameDay(day, chosenDate)
                 ? "bg-black text-white rounded-full"
                 : isToday(day)
                 ? "bg-blue-500 text-white rounded-full"
                 : "text-gray-700 hover:bg-gray-200 rounded-full"
             }`}
-            onClick={() => setSelectedDate(cloneDay)}
+            onClick={() => setChosenDate(cloneDay)}
           >
             <span>{formattedDate}</span>
           </div>
@@ -153,7 +172,7 @@ const CalendarSmall: React.FC = () => {
   };
 
   return (
-    <div className="w-80 bg-white p-5  rounded-lg">
+    <div className="w-80 bg-white p-5 rounded-lg">
       {renderHeader()}
       {renderDays()}
       {renderCells()}

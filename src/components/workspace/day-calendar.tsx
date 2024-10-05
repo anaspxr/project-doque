@@ -1,5 +1,6 @@
 "use client"; 
 
+import { useCalendarContext } from "@/context/CalenderContext";
 import { FC, useState, useEffect } from "react";
 
 
@@ -17,6 +18,8 @@ const generateTimeSlots = (): TimeSlot[] => {
 };
 
 const DayCalendar: FC = () => {
+  const { chosenDate } = useCalendarContext(); 
+
   const times: TimeSlot[] = generateTimeSlots();
   const [tasks, setTasks] = useState<Tasks>({});
   const [currentTime, setCurrentTime] = useState<string>("");
@@ -25,6 +28,17 @@ const DayCalendar: FC = () => {
   const [customTime, setCustomTime] = useState<string>("");
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [editIndex, setEditIndex] = useState<number | null>(null);
+
+  
+
+  const getDisplayedDate = () => {
+    if (chosenDate) {
+      return new Date(chosenDate); // Return chosen date if exists
+    }
+    return new Date(); // Otherwise return current date
+  };
+
+  const displayedDate = getDisplayedDate();
 
   useEffect(() => {
     const updateTime = () => {
@@ -98,8 +112,10 @@ const DayCalendar: FC = () => {
 
   return (
     <div>
-    <h2 className="text-2xl font-bold mb-4 underline">{new Date().toLocaleDateString("en-US", { weekday: "long" })}</h2>
-    <div className="space-y-4 w-[500px] h-[500px] overflow-hidden overflow-y-scroll hide-scrollbar">
+    <h2 className="text-2xl font-bold mb-4 underline">
+      {displayedDate.toLocaleDateString("en-US", { weekday: "long" })}
+    </h2>
+    <div className="space-y-4 w-[500px] h-[450px] overflow-hidden overflow-y-scroll hide-scrollbar">
       {times.map((time, idx) => (
         <div key={idx} className="relative hover:bg-gray-100 transition">
           <div className={`flex items-center cursor-pointer`} onClick={() => openAddModal(time)}>
@@ -124,7 +140,7 @@ const DayCalendar: FC = () => {
         </div>
       ))}
     </div>
-  
+
     {selectedTime !== null && (
       <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
         <div className="bg-white p-6 rounded-md shadow-lg max-w-sm w-full">
@@ -159,3 +175,4 @@ const DayCalendar: FC = () => {
 };
 
 export default DayCalendar;
+
