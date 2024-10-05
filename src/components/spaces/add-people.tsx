@@ -13,7 +13,7 @@ const members = Array.from({ length: 7 }, (_, i) => i);
 export default function AddPeople() {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
+      <DropdownMenuTrigger asChild>
         <Button variant="outline" className="rounded-full">
           Add People
         </Button>

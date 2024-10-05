@@ -1,15 +1,7 @@
 import Navbar from "@/components/spaces/spaces-navbar";
-import { spaces } from "@/consts/spaces";
-export default function Layout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: { spaceId: 1 | 2 | 3 };
-}) {
-  const spaceDetails = spaces[params.spaceId];
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div>
+    <div className="p-4">
       <Navbar />
       {children}
     </div>

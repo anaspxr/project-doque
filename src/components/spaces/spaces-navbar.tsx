@@ -1,12 +1,12 @@
 import AddPeople from "./add-people";
-import BoardsMenu from "./boards-menu";
+import BoardsMenu from "./boards-dropdown";
 import { CreatedDate } from "./date";
 import MembersAvatars from "./members-avatars";
-import SpacesMenu from "./spaces-menu";
+import SpacesMenu from "./spaces-dropdown";
 
 export default function Navbar() {
   return (
-    <div className="flex rounded-md justify-between h-12 shadow-sm bg-white m-4 px-4 items-center">
+    <div className="flex rounded-md justify-between h-12 shadow-sm bg-white px-4 items-center">
       <div>
         <SpacesMenu />
         <span>/</span>

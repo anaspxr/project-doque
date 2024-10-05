@@ -15,15 +15,17 @@ import { useParams } from "next/navigation";
 import { DropdownMenuArrow } from "@radix-ui/react-dropdown-menu";
 
 export default function BoardsMenu() {
-  const { workSpaceId, spaceId, boardId = 0 } = useParams();
+  const { workSpaceId, spaceId, boardId } = useParams();
   const boards = spaces[Number(spaceId)].contents.boards;
   console.log(`/w/{${workSpaceId}/${spaceId}/${1}}`);
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger
+        className="ring-0 border-0 focus-visible:ring-offset-0 focus-visible:ring-0"
+        asChild>
         <Button className="px-1 mx-1" variant="ghost">
-          {boards[Number(boardId)]?.name || ""}
+          {boardId ? boards[Number(boardId)]?.name || "" : "boards"}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">

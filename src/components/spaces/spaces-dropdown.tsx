@@ -18,7 +18,9 @@ export default function SpacesMenu() {
   const spaceDetails = spaces[Number(spaceId)];
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger
+        className="ring-0 border-0 focus-visible:ring-offset-0 focus-visible:ring-0"
+        asChild>
         <span className="pl-4 pr-1 inline-block -ml-4 text-xs">
           <Button size="sm" variant="ghost">
             {spaceDetails.name}
