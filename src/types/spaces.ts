@@ -15,3 +15,15 @@ export type SpaceDetails = {
     boards: Board[];
   };
 };
+
+export type Task = {
+  id: string;
+  content: string;
+  section: string;
+};
+
+export type Section = {
+  title: string;
+  id: string;
+  color: string;
+};

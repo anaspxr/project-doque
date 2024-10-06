@@ -89,3 +89,16 @@ export const spaces: SpaceDetails[] = [
     },
   },
 ];
+
+export const sections = [
+  { title: "To Do", id: "to-do", color: "bg-red-500" },
+  { title: "In Progress", id: "in-progress", color: "bg-yellow-500" },
+  { title: "Done", id: "done", color: "bg-green-500" },
+];
+
+export const tasksData = [
+  { id: "task-1", content: "Task 1", section: "to-do" },
+  { id: "task-2", content: "Task 2", section: "in-progress" },
+  { id: "task-3", content: "Task 3", section: "done" },
+  { id: "task-4", content: "Task 4", section: "to-do" },
+];
