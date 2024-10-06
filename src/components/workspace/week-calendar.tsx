@@ -1,10 +1,11 @@
 "use client";
 import React, { useState } from "react";
+import CalendarSmall from "./calendar-small"; // Make sure this path is correct based on your folder structure
 
 const WeekCalendar: React.FC = () => {
-  const [currentDate, setCurrentDate] = useState(new Date());
+  const [currentDate, setCurrentDate] = useState<Date>(new Date());
 
-  const getWeekDates = (date: Date) => {
+  const getWeekDates = (date: Date): Date[] => {
     const weekDays: Date[] = [];
     const dayOfWeek = date.getDay();
     const weekStart = new Date(date);
@@ -70,7 +71,7 @@ const WeekCalendar: React.FC = () => {
         </button>
       </div>
 
-      <div className="overflow-y-auto h-[calc(100%-64px)] hide-scrollbar"> 
+      <div className="overflow-y-auto h-[calc(100%-64px)] hide-scrollbar">
         <div className="grid grid-cols-[50px,repeat(7,1fr)] border-t border-gray-300">
           <div className="border border-gray-300 bg-gray-100"></div>
 

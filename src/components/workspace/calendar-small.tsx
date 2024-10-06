@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { useCalendarContext } from "@/context/CalenderContext";
 import {
   format,
   addMonths,
@@ -13,21 +14,10 @@ import {
   isSameDay,
   isToday,
 } from "date-fns";
-import { useCalendarContext } from "@/context/CalenderContext";
 
 const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
 ];
 
 const CalendarSmall: React.FC = () => {
@@ -36,10 +26,11 @@ const CalendarSmall: React.FC = () => {
   const [isYearPickerOpen, setYearPickerOpen] = useState(false);
   const [isMonthPickerOpen, setMonthPickerOpen] = useState(false);
 
-  const years = Array.from(
-    { length: 10 },
-    (_, i) => new Date().getFullYear() - 5 + i
-  );
+  const monthPickerRef = useRef<HTMLDivElement>(null);
+  const yearPickerRef = useRef<HTMLDivElement>(null);
+
+  const currentYear = new Date().getFullYear();
+  const years = Array.from({ length: 101 }, (_, i) => currentYear - 50 + i);
 
   const prevMonth = () => setCurrentMonth(subMonths(currentMonth, 1));
   const nextMonth = () => setCurrentMonth(addMonths(currentMonth, 1));
@@ -53,61 +44,98 @@ const CalendarSmall: React.FC = () => {
   const onYearSelect = (year: number) => {
     const newDate = new Date(year, currentMonth.getMonth(), 1);
     setCurrentMonth(newDate);
+    setChosenDate(newDate); // Update chosen date to reflect the selected year
     setYearPickerOpen(false);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        monthPickerRef.current &&
+        !monthPickerRef.current.contains(event.target as Node)
+      ) {
+        setMonthPickerOpen(false);
+      }
+      if (
+        yearPickerRef.current &&
+        !yearPickerRef.current.contains(event.target as Node)
+      ) {
+        setYearPickerOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const renderHeader = () => (
-    <div>
-      <div className="flex justify-end items-center py-3 relative">
-        <button onClick={prevMonth} className="text-gray-500">
-          &#x276E;
-        </button>
-        <div className="text-lg font-medium flex space-x-2">
+    <div className="flex justify-between items-center py-3">
+      <button onClick={prevMonth} className="text-gray-500">
+        &#x276E;
+      </button>
+      <div className="flex space-x-4">
+        <div className="relative inline-block">
           <div
-            className="cursor-pointer"
+            className="cursor-pointer p-2 rounded-lg"
             onClick={() => setMonthPickerOpen(!isMonthPickerOpen)}
           >
             {format(currentMonth, "MMMM")}
           </div>
+          {isMonthPickerOpen && (
+            <div
+              ref={monthPickerRef} 
+              className="absolute z-10 bg-white shadow-lg p-3 mt-1 rounded-lg w-40 max-h-60 overflow-y-scroll hide-scrollbar"
+            >
+              {months.map((month, index) => (
+                <div
+                  key={index}
+                  className="cursor-pointer hover:bg-blue-100 p-2 rounded-lg"
+                  onClick={() => onMonthSelect(index)}
+                >
+                  {month}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="relative inline-block">
           <div
-            className="cursor-pointer"
+            className="cursor-pointer p-2 rounded-lg"
             onClick={() => setYearPickerOpen(!isYearPickerOpen)}
           >
             {format(currentMonth, "yyyy")}
           </div>
+          {isYearPickerOpen && renderYearPicker()}
         </div>
-        <button onClick={nextMonth} className="text-gray-500">
-          &#x276F;
-        </button>
-
-        {isMonthPickerOpen && (
-          <div className="absolute top-10 left-1/2 transform -translate-x-1/2 bg-white shadow-md p-2 rounded-lg">
-            {months.map((month, index) => (
-              <div
-                key={index}
-                className="cursor-pointer hover:bg-gray-200 p-2"
-                onClick={() => onMonthSelect(index)}
-              >
-                {month}
-              </div>
-            ))}
-          </div>
-        )}
-
-        {isYearPickerOpen && (
-          <div className="absolute top-10 left-1/2 transform -translate-x-1/2 bg-white shadow-md p-2 rounded-lg">
-            {years.map((year) => (
-              <div
-                key={year}
-                className="cursor-pointer hover:bg-gray-200 p-2"
-                onClick={() => onYearSelect(year)}
-              >
-                {year}
-              </div>
-            ))}
-          </div>
-        )}
       </div>
+      <button onClick={nextMonth} className="text-gray-500">
+        &#x276F;
+      </button>
+    </div>
+  );
+
+  const renderYearPicker = () => (
+    <div
+      ref={yearPickerRef}
+      className="absolute z-10 bg-white shadow-lg p-3 mt-1 rounded-lg w-40 max-h-60 overflow-y-scroll hide-scrollbar"
+    >
+      {years.map((year) => (
+        <div
+          key={year}
+          className={`cursor-pointer hover:bg-blue-100 p-2 rounded-lg flex justify-between items-center ${
+            year === currentMonth.getFullYear() ? "font-bold" : ""
+          }`}
+          onClick={() => onYearSelect(year)}
+        >
+          <span>{year}</span>
+          {year === currentMonth.getFullYear() && (
+            <span className="text-blue-500">&#10003;</span> // Tick mark for selected year
+          )}
+        </div>
+      ))}
     </div>
   );
 

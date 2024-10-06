@@ -3,12 +3,9 @@ import {
   HiSearch,
   HiUserGroup,
 } from 'react-icons/hi';
-
-import { AiOutlineBell } from "react-icons/ai";
-import { VscColorMode } from "react-icons/vsc";
-import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
-
-
+import { AiOutlineBell } from 'react-icons/ai';
+import { VscColorMode } from 'react-icons/vsc';
+import { IoChatbubbleEllipsesOutline } from 'react-icons/io5';
 
 const RightSideBar: FC = () => {
   return (

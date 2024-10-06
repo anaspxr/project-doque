@@ -1,12 +1,12 @@
-"use client"
-import Calendar from '@/components/workspace/calendar'
-import MonthCalendar from '@/components/workspace/month-calendar';
-import RightSideBar from '@/components/workspace/right-side-bar';
-import WeekCalendar from '@/components/workspace/week-calendar';
-import { usePathname } from 'next/navigation';
-import React, { useState } from 'react'
+"use client";
+import Calendar from "@/components/workspace/calendar";
+import MonthCalendar from "@/components/workspace/month-calendar";
+import RightSideBar from "@/components/workspace/right-side-bar";
+import WeekCalendar from "@/components/workspace/week-calendar";
+import { usePathname } from "next/navigation";
+import React, { useState } from "react";
 
-type Toggle =  "Day" | "Week" | "Month"
+type Toggle = "Day" | "Week" | "Month";
 
 function Page() {
   const [activeTab, setActiveTab] = useState<Toggle>("Day");
@@ -19,9 +19,9 @@ function Page() {
   });
 
   return (
-    <div className='bg-gray-100 flex justify-center'>
+    <div className="bg-gray-100 flex justify-end pr-10">
       <div>
-      <div className="py-3 w-3/3 flex justify-between">
+        <div className="py-3 w-3/3 flex justify-between">
           <div>
             <h1 className="font-extrabold text-3xl">Calendar</h1>
             <span>
@@ -44,21 +44,19 @@ function Page() {
             </div>
           </div>
         </div>
-        {activeTab === 'Day' ? (
+        {activeTab === "Day" ? (
           <Calendar />
-
         ) : activeTab === "Week" ? (
-
           <WeekCalendar />
         ) : (
           <MonthCalendar />
         )}
+      </div>
+      <div className="ml-[50px] mt-[90px]">
+        <RightSideBar />
+      </div>
     </div>
-    <div className='ml-[50px] mt-[90px]'>
-      <RightSideBar />
-    </div>
-    </div>
-  )
+  );
 }
 
-export default Page
+export default Page;
