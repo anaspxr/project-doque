@@ -6,38 +6,24 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
+import StackedAvatars from "../ui/stacked-avatars";
 
-const membersLength = 6;
-const members = Array.from({ length: membersLength }, (_, i) => i);
-const maxVisibleMembers = membersLength > 4 ? 3 : membersLength; //? if there are more than 4 members, show only 3. Otherwise, show all members.
+const members = [{}, {}, {}, {}, {}, {}, {}];
 
 export default function MembersAvatars() {
   return (
     <div>
       <HoverCard>
         <HoverCardTrigger asChild>
-          <Button variant="ghost" className="flex -space-x-4 cursor-pointer">
-            {members.slice(0, maxVisibleMembers).map((member) => (
-              <Avatar key={member} className="border-2 w-8 h-8 border-white">
-                <AvatarImage
-                  src="https://github.com/shadcn.png"
-                  alt="@shadcn"
-                />
-                <AvatarFallback />
-              </Avatar>
-            ))}
-            {members.length > maxVisibleMembers && (
-              <div className="flex items-center justify-center w-8 h-8 rounded-full z-10 bg-gray-300 text-zinc-800 text-lg font-semibold">
-                +{members.length - maxVisibleMembers}
-              </div>
-            )}
+          <Button variant="ghost" className="cursor-pointer">
+            <StackedAvatars members={members} max={3} size="md" />
           </Button>
         </HoverCardTrigger>
         <HoverCardContent
           align="end"
           className="space-y-2 relative top-1 left-4">
-          {members.map((member) => (
-            <div key={member} className="flex gap-4">
+          {members.map((member, i) => (
+            <div key={i} className="flex gap-4">
               <Avatar>
                 <AvatarImage src="https://github.com/shadcn.png" />
                 <AvatarFallback>VC</AvatarFallback>
