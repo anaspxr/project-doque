@@ -1,7 +1,7 @@
 "use client"; 
 
 import { useCalendarContext } from "@/context/CalenderContext";
-import { FC, useState, useEffect } from "react";
+import { FC, useState } from "react";
 
 type TimeSlot = string; 
 type Tasks = { [key: string]: string[] }; 
@@ -24,7 +24,7 @@ const DayCalendar: FC = () => {
 
   const times: TimeSlot[] = generateTimeSlots();
   const [tasks, setTasks] = useState<Tasks>({});
-  const [currentTime, setCurrentTime] = useState<string>("");
+  // const [currentTime, setCurrentTime] = useState<string>("");
   const [selectedTime, setSelectedTime] = useState<null | string>(null);
   const [newTask, setNewTask] = useState<string>("");
   const [customTime, setCustomTime] = useState<string>("");
@@ -39,18 +39,6 @@ const DayCalendar: FC = () => {
   };
 
   const displayedDate = getDisplayedDate();
-
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      const currentHour = `${now.getHours() < 10 ? "0" : ""}${now.getHours()}:00`;
-      setCurrentTime(currentHour);
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 60000);
-    return () => clearInterval(interval);
-  }, []);
 
   const handleAddOrEditTask = () => {
     const timeToSet = customTime || selectedTime;

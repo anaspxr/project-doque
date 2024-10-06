@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import CalendarSmall from "./calendar-small"; // Make sure this path is correct based on your folder structure
 
 const WeekCalendar: React.FC = () => {
   const [currentDate, setCurrentDate] = useState<Date>(new Date());

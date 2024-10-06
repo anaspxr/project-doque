@@ -3,7 +3,6 @@ import Calendar from "@/components/workspace/calendar";
 import MonthCalendar from "@/components/workspace/month-calendar";
 import RightSideBar from "@/components/workspace/right-side-bar";
 import WeekCalendar from "@/components/workspace/week-calendar";
-import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 
 type Toggle = "Day" | "Week" | "Month";
