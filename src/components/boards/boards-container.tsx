@@ -26,8 +26,8 @@ import TaskCard from "./task-card";
 export default function BoardsContainer() {
   const [activeColumn, setActiveColumn] = useState<Section | null>(null);
   const [activeTask, setActiveTask] = useState<Task | null>(null);
-  const [columns, setColumns] = useState(sections);
-  const [tasks, setTasks] = useState(tasksData);
+  const [columns, setColumns] = useState<Section[]>(sections);
+  const [tasks, setTasks] = useState<Task[]>(tasksData);
 
   const columnsIds = useMemo(
     () => columns.map((column) => column.id),

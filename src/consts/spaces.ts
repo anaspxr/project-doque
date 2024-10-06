@@ -91,14 +91,45 @@ export const spaces: SpaceDetails[] = [
 ];
 
 export const sections = [
-  { title: "To Do", id: "to-do", color: "bg-red-500" },
-  { title: "In Progress", id: "in-progress", color: "bg-yellow-500" },
-  { title: "Done", id: "done", color: "bg-green-500" },
+  { title: "To Do", id: "to-do", color: "#F9C86A" },
+  { title: "In Progress", id: "in-progress", color: "#EF9033" },
+  { title: "Done", id: "done", color: "#96C18B" },
 ];
 
 export const tasksData = [
-  { id: "task-1", content: "Task 1", section: "to-do" },
-  { id: "task-2", content: "Task 2", section: "in-progress" },
-  { id: "task-3", content: "Task 3", section: "done" },
-  { id: "task-4", content: "Task 4", section: "to-do" },
+  { id: "task-1", content: "Task 1", section: "to-do", color: "#F9C86A" },
+  { id: "task-2", content: "Task 2", section: "in-progress", color: "#EF9033" },
+  { id: "task-3", content: "Task 3", section: "done", color: "#96C18B" },
+  { id: "task-4", content: "Task 4", section: "to-do", color: "#F9C86A" },
 ];
+
+export const colors = {
+  blue1: {
+    name: "Green Blue",
+    hex: "#2364AA",
+  },
+  blue2: {
+    name: "Picton Blue",
+    hex: "#3DA5D9",
+  },
+  green1: {
+    name: "Verdigris",
+    hex: "#4CAF50",
+  },
+  green2: {
+    name: "Olivine",
+    hex: "#96C18B",
+  },
+  yellow1: {
+    name: "Jasmine",
+    hex: "#FEE485",
+  },
+  yellow2: {
+    name: "Saffron",
+    hex: "#F9C86A",
+  },
+  orange1: {
+    name: "Carrot",
+    hex: "#EF9033",
+  },
+};

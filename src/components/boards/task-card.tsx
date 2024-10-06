@@ -41,7 +41,9 @@ export default function TaskCard({ task }: { task: Task }) {
         className={`hover:bg-zinc-50 overflow-hidden ${
           isDragging && "opacity-50 "
         }`}>
-        <div className="h-5 bg-orange-300"></div>
+        <div
+          className="h-5"
+          style={{ backgroundColor: task.color || "#FEE485" }}></div>
         <CardHeader>
           <CardTitle>{task.content}</CardTitle>
           <CardDescription>Description</CardDescription>

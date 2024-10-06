@@ -8,7 +8,7 @@ import { Button } from "../ui/button";
 import { FaPlus, FaTrash } from "react-icons/fa6";
 import { useMemo, useState } from "react";
 import { Input } from "../ui/input";
-import { Task } from "@/types/spaces";
+import { Section, Task } from "@/types/spaces";
 import TaskCard from "./task-card";
 
 export default function SectionContainer({
@@ -19,7 +19,7 @@ export default function SectionContainer({
   tasks,
   isOverLay = false,
 }: {
-  section: { id: string; title: string };
+  section: Section;
   deleteSection?: (id: string) => void;
   updateSectionTitle?: (id: string, title: string) => void;
   createTask?: (id: string) => void;
@@ -49,6 +49,7 @@ export default function SectionContainer({
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
+    border: `1px solid ${section.color || "#FEE485"}`,
   };
 
   return (

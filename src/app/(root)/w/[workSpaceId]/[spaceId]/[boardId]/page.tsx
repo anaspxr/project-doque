@@ -15,7 +15,7 @@ export default function Page({
   if (!board) redirect(`/w/${params.workSpaceId}/${params.spaceId}`);
 
   return (
-    <div className="mt-4">
+    <div className="mt-4 overflow-hidden">
       <div className="flex px-4 justify-between">
         <SearchBar placeholder={`Search in ${board.name}..`} />
         <Filter />

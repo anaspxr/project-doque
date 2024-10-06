@@ -20,10 +20,13 @@ export type Task = {
   id: string;
   content: string;
   section: string;
+  color?: string;
 };
 
 export type Section = {
   title: string;
   id: string;
-  color: string;
+  color?: string;
 };
+
+export type coverColor = { name: string; hex: string };
