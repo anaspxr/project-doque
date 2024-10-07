@@ -8,8 +8,8 @@ import Image from 'next/image';
 
 export default function Sidebar() {
     const sidebarItems = [
-        { icon: <AiOutlineHome className='text-3xl text-black mr-3' />, label: 'Home', link: '/home' },
-        { icon: <HiOutlineTemplate className='text-3xl text-black mr-3' />, label: 'Templates', link: '/home/templates' },
+        { icon: <AiOutlineHome className='text-3xl text-black mr-3' />, label: 'Home', link: '/u/home' },
+        { icon: <HiOutlineTemplate className='text-3xl text-black mr-3' />, label: 'Templates', link: '/u/home/templates' },
     ];
 
     return (
@@ -56,7 +56,7 @@ export default function Sidebar() {
                 </div>
             </div>
 
-            <Link href="/settings">
+            <Link href="">
                 <div className='flex items-center p-3 bg-[#EDF1F4] hover:bg-[#E1E4E6] rounded-lg cursor-pointer mt-2'>
                     <FiSettings className='text-3xl text-black mr-3' />
                     <h2 className='font-medium text-lg text-black'>Settings</h2>
