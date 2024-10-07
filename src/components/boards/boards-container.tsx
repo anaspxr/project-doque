@@ -126,7 +126,7 @@ export default function BoardsContainer() {
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
       onDragOver={handleDragOver}>
-      <div>
+      <div className="w-full">
         <Button
           onClick={createColumn}
           size="sm"
@@ -134,7 +134,7 @@ export default function BoardsContainer() {
           className="flex gap-2 items-center my-2">
           Add Column <FaPlus size={10} />
         </Button>
-        <div className="flex gap-4 w-screen overflow-auto scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-white scrollbar-corner-transparent">
+        <div className="flex gap-4 w-screen-lg overflow-auto scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-white scrollbar-corner-transparent">
           <SortableContext
             items={columnsIds}
             strategy={horizontalListSortingStrategy}>
