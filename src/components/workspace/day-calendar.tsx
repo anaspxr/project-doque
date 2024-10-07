@@ -1,6 +1,6 @@
 "use client"; 
 
-import { useCalendarContext } from "@/context/CalenderContext";
+import { useCalendarContext } from "@/contexts/CalenderContext";
 import { FC, useState } from "react";
 
 type TimeSlot = string; 
@@ -24,7 +24,6 @@ const DayCalendar: FC = () => {
 
   const times: TimeSlot[] = generateTimeSlots();
   const [tasks, setTasks] = useState<Tasks>({});
-  // const [currentTime, setCurrentTime] = useState<string>("");
   const [selectedTime, setSelectedTime] = useState<null | string>(null);
   const [newTask, setNewTask] = useState<string>("");
   const [customTime, setCustomTime] = useState<string>("");

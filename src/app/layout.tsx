@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CalenderContextProvider } from "@/context/CalenderContext";
+import { CalenderContextProvider } from "@/contexts/CalenderContext";
 import "./globals.css";
 
 export const metadata: Metadata = {

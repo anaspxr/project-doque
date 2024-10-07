@@ -19,8 +19,7 @@ const MonthCalendar: React.FC = () => {
 
     const previousMonth = currentDate.subtract(1, 'month');
     const daysInPreviousMonth = previousMonth.daysInMonth();
-
-    // Add previous month's days to fill the first row
+   
     for (let i = 0; i < firstDayOfMonth - 1; i++) {
       daysInMonth.push({
         day: daysInPreviousMonth - (firstDayOfMonth - 2) + i,
@@ -28,12 +27,10 @@ const MonthCalendar: React.FC = () => {
       });
     }
 
-    // Add current month's days
     for (let day = 1; day <= daysInCurrentMonth; day++) {
       daysInMonth.push({ day, isCurrentMonth: true });
     }
 
-    // Fill in the remaining days with the next month's days
     const remainingSpots = 7 - (daysInMonth.length % 7);
     if (remainingSpots < 7) {
       for (let day = 1; day <= remainingSpots; day++) {
@@ -56,7 +53,7 @@ const MonthCalendar: React.FC = () => {
   };
 
   return (
-    <div className="w-[855px] h-[500px]  border border-2  overflow-y-scroll hide-scrollbar bg-white">
+    <div className="w-[855px] h-[500px]   border-2  overflow-y-scroll hide-scrollbar bg-white">
       <div className="flex items-center justify-end p-4 bg-white shadow-md rounded-t-lg">
         <button
           onClick={handlePreviousMonth}
@@ -81,7 +78,7 @@ const MonthCalendar: React.FC = () => {
         {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, index) => (
           <div
             key={index}
-            className="text-center p-1 bg-gray-100 text-gray-600 font-semibold"
+            className="text-center  bg-gray-100 text-gray-600 font-semibold"
           >
             {day}
           </div>

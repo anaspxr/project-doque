@@ -77,7 +77,7 @@ const WeekCalendar: React.FC = () => {
           {days.map((day, index) => (
             <div
               key={index}
-              className="text-center p-2 border border-gray-300 bg-gray-100 font-light"
+              className="text-center border border-gray-300 bg-gray-100 font-light"
             >
               {`${day.toLocaleString("en-US", { weekday: "short" })} ${day.getDate()}`}
             </div>

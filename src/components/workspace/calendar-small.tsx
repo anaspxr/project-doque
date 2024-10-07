@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
-import { useCalendarContext } from "@/context/CalenderContext";
+import { useCalendarContext } from "@/contexts/CalenderContext";
 import {
   format,
   addMonths,
