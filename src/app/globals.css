@@ -6,7 +6,6 @@
     --radius: 0.5rem
   }
 }
-
 .hide-scrollbar {
   -ms-overflow-style: none;  
   scrollbar-width: none;     
