@@ -10,10 +10,8 @@ import {
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
-import { sections, tasksData } from "@/consts/spaces";
 import { useMemo, useState } from "react";
 import {
-  arrayMove,
   horizontalListSortingStrategy,
   SortableContext,
 } from "@dnd-kit/sortable";
@@ -22,12 +20,24 @@ import { Button } from "../ui/button";
 import { FaPlus } from "react-icons/fa6";
 import { Section, Task } from "@/types/spaces";
 import TaskCard from "./task-card";
+import { useBoards } from "@/contexts/boards-context";
 
 export default function BoardsContainer() {
   const [activeColumn, setActiveColumn] = useState<Section | null>(null);
   const [activeTask, setActiveTask] = useState<Task | null>(null);
-  const [columns, setColumns] = useState<Section[]>(sections);
-  const [tasks, setTasks] = useState<Task[]>(tasksData);
+
+  const {
+    tasks,
+    columns,
+
+    createColumn,
+    createTask,
+    handleDelete,
+    moveColumn,
+    moveTaskToColumn,
+    swapTasksInSameColumn,
+    updateSectionTitle,
+  } = useBoards();
 
   const columnsIds = useMemo(
     () => columns.map((column) => column.id),
@@ -35,20 +45,20 @@ export default function BoardsContainer() {
   );
 
   const handleDragStart = (event: DragStartEvent) => {
-    const active = event.active.data.current;
+    const active = event.active.data.current; // This is the active item that is being dragged
     if (active?.type === "section") {
-      setActiveColumn(active.section);
+      setActiveColumn(active.section); // if the active item is a section, set it as the active column
       return;
     }
     if (active?.type === "task") {
-      setActiveTask(active.task);
+      setActiveTask(active.task); // if the active item is a task, set it as the active task
       return;
     }
   };
 
   const handleDragEnd = (event: DragEndEvent) => {
     setActiveColumn(null);
-    setActiveTask(null);
+    setActiveTask(null); // reset the active column and task
     const { active, over } = event;
     if (!over) {
       return;
@@ -59,18 +69,11 @@ export default function BoardsContainer() {
 
     if (activeId === overId) return;
 
-    setColumns((prevColumns) => {
-      const activeColumnIndex = prevColumns.findIndex(
-        (column) => column.id === activeId
-      );
-      const overColumnIndex = prevColumns.findIndex(
-        (column) => column.id === overId
-      );
-      return arrayMove(prevColumns, activeColumnIndex, overColumnIndex);
-    });
+    moveColumn(activeId, overId); // move the column if the active item is a column
   };
 
   const handleDragOver = (event: DragEndEvent) => {
+    // This function is called when the dragged item is over another item
     const { active, over } = event;
     if (!over) {
       return;
@@ -87,30 +90,15 @@ export default function BoardsContainer() {
     if (!taskIsActive) return;
 
     if (taskIsActive && isOverATask) {
-      setTasks((tasks) => {
-        console.log("triggerd 1");
-
-        const activeIndex = tasks.findIndex((task) => task.id === activeId);
-        const overIndex = tasks.findIndex((task) => task.id === overId);
-        if (tasks[activeIndex].section !== tasks[overIndex].section) {
-          tasks[activeIndex].section = tasks[overIndex].section;
-        }
-
-        return arrayMove(tasks, activeIndex, overIndex);
-      });
+      // If the active item is a task and the over item is a task, swap the positions of the tasks
+      swapTasksInSameColumn(activeId, overId);
     }
 
     const isOverAColumn = over.data.current?.type === "section";
 
     if (taskIsActive && isOverAColumn) {
-      setTasks((tasks) => {
-        console.log("triggerd 2");
-        const activeIndex = tasks.findIndex((task) => task.id === activeId);
-
-        tasks[activeIndex].section = overId.toString();
-
-        return arrayMove(tasks, activeIndex, activeIndex);
-      });
+      // If the active item is a task and the over item is a column, move the task to the column
+      moveTaskToColumn(activeId, overId);
     }
   };
 
@@ -131,45 +119,16 @@ export default function BoardsContainer() {
 
   const sensors = useSensors(mouseSensor, touchSensor);
 
-  const handleDelete = (id: string) => {
-    setColumns((prevColumns) =>
-      prevColumns.filter((column) => column.id !== id)
-    );
-  };
-
-  const updateSectionTitle = (id: string, newTitle: string) => {
-    setColumns((prevColumns) =>
-      prevColumns.map((column) =>
-        column.id === id ? { ...column, title: newTitle } : column
-      )
-    );
-  };
-
-  const addColumn = () => {
-    setColumns((prevColumns) => [
-      ...prevColumns,
-      { id: Date.now().toString(), title: "New Column", color: "bg-blue-500" },
-    ]);
-  };
-
-  const createTask = (sectionId: string) => {
-    const newTask: Task = {
-      id: Date.now().toString(),
-      content: "New Task",
-      section: sectionId,
-    };
-    setTasks([...tasks, newTask]);
-  };
-
   return (
     <DndContext
+      id="dnd-context-id"
       sensors={sensors}
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
       onDragOver={handleDragOver}>
       <div>
         <Button
-          onClick={addColumn}
+          onClick={createColumn}
           size="sm"
           variant="outline"
           className="flex gap-2 items-center my-2">
