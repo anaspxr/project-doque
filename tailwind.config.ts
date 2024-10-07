@@ -3,7 +3,6 @@ import type { Config } from "tailwindcss";
 const config: Config = {
   darkMode: ["class"],
   content: [
-    // Merge content paths from both files
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -13,7 +12,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // Merge theme settings
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
