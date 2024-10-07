@@ -2,7 +2,7 @@
 
 import React from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import Card from "../card-carousel/card";
+import Card from "@/components/user-home/card";
 
 interface CarouselProps {
     cards: Array<{

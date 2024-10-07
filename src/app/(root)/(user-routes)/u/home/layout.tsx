@@ -1,4 +1,4 @@
-import Sidebar from '@/components/sidebar-home/sidebar'
+import Sidebar from '@/components/user-home/sidebar'
 import React from 'react'
 
 export default function layout({
