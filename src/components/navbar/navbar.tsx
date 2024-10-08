@@ -4,6 +4,8 @@ import ProfileSection from "./profilesection";
 import SearchField from "./searchfield";
 import Image from "next/image";
 import Link from "next/link";
+import { VscColorMode } from "react-icons/vsc";
+import { AiOutlineBell } from "react-icons/ai";
 
 export default function Navbar() {
   return (
@@ -26,6 +28,8 @@ export default function Navbar() {
         </div>
         <div className="flex items-center space-x-6">
           <InviteButton />
+          <VscColorMode/>
+          <AiOutlineBell/>
           <ProfileSection />
         </div>
       </div>
