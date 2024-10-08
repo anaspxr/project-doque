@@ -41,7 +41,7 @@ const Feature: React.FC = () => {
   return (
     <div className="container mx-auto px-6 py-12">
       <div className="max-w-6xl mx-auto text-center mb-10">
-        <h2 className="text-3xl font-semibold text-gray-800">Features</h2>
+        <h2 className="text-3xl text-gray-800">Features</h2>
         <p className="text-gray-600 text-lg mt-4">
           Discover what makes DOQUE the best tool for managing your projects and
           tasks.

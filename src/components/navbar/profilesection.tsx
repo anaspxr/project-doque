@@ -26,7 +26,7 @@ export default function ProfileSection() {
 
     return (
         <div className="relative">
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2">
                 <div
                     className="flex items-center space-x-2 cursor-pointer"
                     onClick={() => setIsOpen(!isOpen)}
@@ -34,7 +34,7 @@ export default function ProfileSection() {
                     <Image
                         src="https://i.pravatar.cc/300"
                         alt="Profile"
-                        className="h-10 w-10 rounded-full object-cover"
+                        className="h-8 w-8 rounded-full object-cover"
                         width={300}
                         height={300}
                     />
@@ -50,41 +50,41 @@ export default function ProfileSection() {
             {isOpen && (
                 <div
                     ref={dropdownRef}
-                    className="absolute right-0 mt-4 w-80 bg-white/90 rounded-lg border border-gray-200 z-10 shadow-lg backdrop-blur-md p-4"
+                    className="absolute right-0 mt-2 w-64 bg-white/90 rounded-lg border border-gray-200 z-10 shadow-lg backdrop-blur-md p-3"
                 >
-                    <Button className="flex items-center justify-between bg-[#E5E9EC] rounded-2xl w-full hover:bg-[#E5E9EC]/90 h-14 p-4">
-                        <div className="flex items-center space-x-4">
+                    <Button className="flex items-center justify-between bg-[#E5E9EC] rounded-lg w-full hover:bg-[#E5E9EC]/90 h-12 p-2">
+                        <div className="flex items-center space-x-2">
                             <Image
                                 src="https://i.pravatar.cc/300"
                                 alt="Profile"
-                                className="h-10 w-10 rounded-full object-cover"
+                                className="h-8 w-8 rounded-full object-cover"
                                 width={300}
                                 height={300}
                             />
                             <span className="font-semibold text-gray-800">Alixa</span>
                         </div>
-                        <div className="flex items-center space-x-2">
+                        <div className="flex items-center space-x-1">
                             <span className="text-sm text-gray-500">Profile</span>
                             <IoIosArrowForward className="text-gray-600" />
                         </div>
                     </Button>
 
-                    <div className="flex justify-between gap-4 mt-4 border-b border-gray-200 pb-4">
-                        <Button className="flex-1 bg-[#C8AFBE] text-black rounded-3xl h-14 hover:bg-[#C7C3B5]">
+                    <div className="flex justify-between gap-2 mt-2 border-b border-gray-200 pb-2">
+                        <Button className="flex-1 bg-[#C8AFBE] text-black rounded-2xl h-10 hover:bg-[#C7C3B5]">
                             Theme
                         </Button>
-                        <Button className="flex-1 bg-[#C8AFBE] text-black rounded-3xl h-14 hover:bg-[#C7C3B5]">
+                        <Button className="flex-1 bg-[#C8AFBE] text-black rounded-2xl h-10 hover:bg-[#C7C3B5]">
                             Templates
                         </Button>
                     </div>
 
-                    <div className="flex justify-between gap-4 mt-4">
-                        <Button className="flex-1 bg-[#E5E9EC] text-black rounded-3xl flex items-center justify-center h-10 hover:bg-[#C7C3B5]">
-                            <FiSettings className="mr-2" />
+                    <div className="flex justify-between gap-2 mt-2">
+                        <Button className="flex-1 bg-[#E5E9EC] text-black rounded-2xl flex items-center justify-center h-8 hover:bg-[#C7C3B5]">
+                            <FiSettings className="mr-1" />
                             Settings
                         </Button>
-                        <Button className="flex-1 bg-[#E5E9EC] text-black rounded-3xl flex items-center justify-center h-10 hover:bg-[#C7C3B5]">
-                            <IoLogOutOutline className="mr-2" />
+                        <Button className="flex-1 bg-[#E5E9EC] text-black rounded-2xl flex items-center justify-center h-8 hover:bg-[#C7C3B5]">
+                            <IoLogOutOutline className="mr-1" />
                             Logout
                         </Button>
                     </div>
@@ -93,5 +93,3 @@ export default function ProfileSection() {
         </div>
     );
 };
-
-
