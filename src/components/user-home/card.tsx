@@ -10,7 +10,7 @@ interface CardProps {
 export default function Card({ title, description, image }: CardProps) {
     return (
         <div className="relative rounded-lg shadow-lg overflow-hidden">
-            <div className="relative w-full h-40">
+            <div className="relative w-full h-36">
                 <Image
                     src={image}
                     alt={title}
@@ -19,7 +19,7 @@ export default function Card({ title, description, image }: CardProps) {
                     height={400}
                 />
                 <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                    <h2 className="text-white font-bold text-xl text-center">{title}</h2>
+                    <h2 className="text-white font-bold text-xl">{title}</h2>
                 </div>
             </div>
             {description && (
@@ -27,6 +27,4 @@ export default function Card({ title, description, image }: CardProps) {
             )}
         </div>
     );
-};
-
-
+}
