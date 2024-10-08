@@ -1,8 +1,8 @@
 "use client";
-import Calendar from "@/components/workspace/calendar";
-import MonthCalendar from "@/components/workspace/month-calendar";
+import Calendar from "@/components/workspace/calendar/calendar";
+import MonthCalendar from "@/components/workspace/calendar/month-calendar";
 import RightSideBar from "@/components/workspace/right-side-bar";
-import WeekCalendar from "@/components/workspace/week-calendar";
+import WeekCalendar from "@/components/workspace/calendar/week-calendar";
 import React, { useState } from "react";
 
 type Toggle = "Day" | "Week" | "Month";
@@ -50,9 +50,6 @@ function Page() {
         ) : (
           <MonthCalendar />
         )}
-      </div>
-      <div className="ml-[50px] mt-[90px]">
-        <RightSideBar />
       </div>
     </div>
   );

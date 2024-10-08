@@ -20,7 +20,11 @@ const months = [
   "July", "August", "September", "October", "November", "December",
 ];
 
-const CalendarSmall: React.FC = () => {
+type calendar = {
+  className: string;
+}
+
+const CalendarSmall: React.FC<calendar> = ({className}) => {
   const { chosenDate, setChosenDate } = useCalendarContext();
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [isYearPickerOpen, setYearPickerOpen] = useState(false);
@@ -44,7 +48,7 @@ const CalendarSmall: React.FC = () => {
   const onYearSelect = (year: number) => {
     const newDate = new Date(year, currentMonth.getMonth(), 1);
     setCurrentMonth(newDate);
-    setChosenDate(newDate); // Update chosen date to reflect the selected year
+    setChosenDate(newDate); 
     setYearPickerOpen(false);
   };
 
@@ -132,7 +136,7 @@ const CalendarSmall: React.FC = () => {
         >
           <span>{year}</span>
           {year === currentMonth.getFullYear() && (
-            <span className="text-blue-500">&#10003;</span> // Tick mark for selected year
+            <span className="text-blue-500">&#10003;</span> 
           )}
         </div>
       ))}
@@ -146,7 +150,7 @@ const CalendarSmall: React.FC = () => {
 
     for (let i = 0; i < 7; i++) {
       days.push(
-        <div key={i} className="text-center text-gray-500 text-sm">
+        <div key={i} className="text-center text-gray-500 text-xs">
           {format(addDays(startDate, i), dateFormat)}
         </div>
       );
@@ -173,7 +177,7 @@ const CalendarSmall: React.FC = () => {
         days.push(
           <div
             key={day.toString()}
-            className={`py-2 text-center cursor-pointer ${
+            className={`py-1 text-center cursor-pointer ${
               !isSameMonth(day, monthStart)
                 ? "text-gray-300"
                 : isSameDay(day, chosenDate)
@@ -200,7 +204,7 @@ const CalendarSmall: React.FC = () => {
   };
 
   return (
-    <div className="w-80 bg-white p-5 rounded-lg">
+    <div className={className}>
       {renderHeader()}
       {renderDays()}
       {renderCells()}
