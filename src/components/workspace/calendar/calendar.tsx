@@ -11,7 +11,7 @@ export default function Calendar() {
         <main className="flex justify-center items-center w-2/3 rounded-lg shadow-lg bg-white">
           <div className="flex justify-between ml-[300px] ">
             <DayCalendar />
-            <CalendarSmall />
+            <CalendarSmall className="w-80 bg-white p-5 rounded-lg" />
           </div>
         </main>
       </div>

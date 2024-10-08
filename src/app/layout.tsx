@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Poppins } from 'next/font/google';
 import { CalenderContextProvider } from "@/contexts/CalenderContext";
 import "./globals.css";
 
@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} bg-zinc-100`}>
+      <body className={poppins.className}>
         <CalenderContextProvider>{children}</CalenderContextProvider>
       </body>
     </html>

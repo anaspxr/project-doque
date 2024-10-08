@@ -5,22 +5,25 @@ export default function StackedAvatars({
   max,
   className,
   size = "md",
+  space = "low",
 }: {
   members: { src?: string; alt?: string }[];
   max: number;
   className?: string;
   size?: "sm" | "md" | "lg";
+  space?: "low" | "md" | "high";
 }) {
   const maxVisibleMembers = members.length > max ? max - 1 : members.length;
 
   return (
-    <span className={`flex -space-x-4 ${className}`}>
+    <span className={`flex ${space === "low"?"-space-x-4":space==="md"?"-space-x-3":"-space-x-2"}  ${className}`}>
       {members.slice(0, maxVisibleMembers).map((member, i) => (
         <Avatar
           key={i}
           className={`border-2 border-white ${
             size === "sm" ? "w-6 h-6" : size === "md" ? "w-8 h-8" : "w-12 h-12"
-          }`}>
+          }`}
+        >
           <AvatarImage
             src={member.src || "/images/avatarFallback.png"}
             alt={member.alt || "Avatar"}
@@ -36,7 +39,8 @@ export default function StackedAvatars({
               : size === "md"
               ? "w-8 h-8 text-base"
               : "w-12 h-12 text-lg"
-          }`}>
+          }`}
+        >
           +{members.length - maxVisibleMembers}
         </div>
       )}
