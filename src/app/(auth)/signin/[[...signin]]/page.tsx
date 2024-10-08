@@ -7,21 +7,31 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from 'react-icons/fa';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation'; 
 
 export default function Login() {
     const [showPassword, setShowPassword] = useState(false);
+    const router = useRouter(); 
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
         console.log('Logging in user...');
+
+        
+        setTimeout(() => {
+            console.log('User logged in successfully');
+            router.push('/home'); 
+        }, 1000);
     };
 
     const handleGoogleLogin = () => {
         console.log('Logging in with Google...');
+        router.push('/home'); 
     };
 
     const handleGithubLogin = () => {
         console.log('Logging in with GitHub...');
+        router.push('/home'); 
     };
 
     const togglePasswordVisibility = () => {
@@ -29,8 +39,8 @@ export default function Login() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#8BD6EE] to-[#F8F7F7] w-full flex justify-center items-center">
-            <div className="bg-gradient-to-br from-[#8BD6EE] to-[#F8F7F7] p-8 rounded-2xl shadow-xl w-full max-w-md">
+        <div className="min-h-screen bg-gradient-to-r from-white to-[#E0F7FF] w-full flex justify-center items-center">
+            <div className="bg-gradient-to-br from-[#E0F7FF] to-white p-8 rounded-2xl shadow-gray-300 shadow-lg w-full max-w-md">
                 <div className="flex justify-center mb-6">
                     <div className="bg-white rounded-lg p-3 flex justify-center items-center shadow-lg">
                         <BiLogIn className="text-3xl text-black" />
@@ -89,7 +99,7 @@ export default function Login() {
                     </Button>
                     <Button
                         onClick={handleGithubLogin}
-                        className="flex items-center justify-center space-x-2 w-full bg-gray-100 text-gray-900 px-4 py-3 rounded-lg shadow-md hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-[#93D8EE]"
+                        className="flex items-center justify-center space-x-2 w-full bg-gray-100 text-gray-900 px-4 py-3 rounded-lg shadow-md hover:bg-[#93D8EE] focus:outline-none focus:ring-2 focus:ring-[#93D8EE]"
                     >
                         <FaGithub className="text-xl" />
                         <span className='font-semibold text-[#5E6061]'>GitHub</span>

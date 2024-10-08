@@ -4,36 +4,34 @@ import React from 'react';
 import { AiOutlineMail } from 'react-icons/ai';
 import { BiLogIn } from "react-icons/bi";
 import Link from 'next/link';
+import { useRouter } from 'next/navigation'; 
 
 export default function ForgotPassword() {
+    const router = useRouter(); 
+
     const handleForgotPassword = (e: React.FormEvent) => {
         e.preventDefault();
         console.log('OTP sent to the email.');
+        setTimeout(() => {
+            router.push('/verify-otp'); 
+        }, 1000); 
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#8BD6EE] to-[#F8F7F7] w-full flex justify-center items-center">
-            <div className="bg-gradient-to-br from-[#8BD6EE] to-[#F8F7F7] p-12 rounded-2xl shadow-lg w-full max-w-md">
-                
-                {/* Icon */}
-                <div className="flex justify-center mb-8"> {/* Increased margin */}
+        <div className="min-h-screen bg-gradient-to-r from-white to-[#E0F7FF] w-full flex justify-center items-center">
+            <div className="bg-gradient-to-br from-[#E0F7FF] to-white p-8 rounded-2xl shadow-gray-300 shadow-lg w-full max-w-md">
+                <div className="flex justify-center mb-8"> 
                     <div className="bg-white rounded-lg p-4 flex justify-center items-center shadow-md">
-                        <BiLogIn className="text-4xl text-black" /> {/* Increased icon size */}
+                        <BiLogIn className="text-4xl text-black" /> 
                     </div>
                 </div>
-                
-                {/* Heading */}
-                <h1 className="text-3xl font-bold text-center mb-6"> {/* Increased margin */}
+                <h1 className="text-3xl font-bold text-center mb-6"> 
                     Forgot Password?
                 </h1>
-                
-                {/* Instruction Text */}
-                <p className="text-gray-600 text-center mb-8"> {/* Increased margin */}
+                <p className="text-gray-600 text-center mb-8"> 
                     Enter your email to receive an OTP to reset your password.
                 </p>
-
-                {/* Form */}
-                <form onSubmit={handleForgotPassword} className="space-y-8"> {/* Increased spacing */}
+                <form onSubmit={handleForgotPassword} className="space-y-8"> 
                     <div className="relative">
                         <AiOutlineMail className="absolute left-3 top-4 text-[#5E6061]" />
                         <input
@@ -50,14 +48,12 @@ export default function ForgotPassword() {
                         Send OTP
                     </button>
                 </form>
-                
-                {/* Links */}
-                <div className="flex justify-center items-center mt-8 text-sm text-gray-700"> {/* Increased margin */}
+                <div className="flex justify-center items-center mt-8 text-sm text-gray-700"> 
                     <Link href="/signup" className="text-[#242425] hover:underline">
                         Create New Account
                     </Link>
-                    <span className="mx-4 text-gray-600">|</span> {/* Increased gap */}
-                    <Link href="/login" className="text-[#242425] hover:underline">
+                    <span className="mx-4 text-gray-600">|</span> 
+                    <Link href="/signin" className="text-[#242425] hover:underline">
                         Login
                     </Link>
                 </div>

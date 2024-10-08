@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { BiLogIn } from "react-icons/bi";
 
 export default function VerifyEmail() {
@@ -8,7 +9,8 @@ export default function VerifyEmail() {
     const [isResendDisabled, setIsResendDisabled] = useState(true);
     const [timer, setTimer] = useState(30);
 
-    // Update OTP in the correct index
+    const router = useRouter();
+
     const handleOtpChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
         const value = e.target.value;
         if (value.length <= 1) {
@@ -16,7 +18,6 @@ export default function VerifyEmail() {
             newOtp[index] = value;
             setOtp(newOtp);
 
-            // Automatically focus next input if a digit is entered
             if (value && index < 5) {
                 const nextInput = document.getElementById(`otp-${index + 1}`);
                 if (nextInput) {
@@ -28,8 +29,12 @@ export default function VerifyEmail() {
 
     const handleResendOTP = () => {
         setIsResendDisabled(true);
-        setTimer(30); 
+        setTimer(30);
         console.log('Resending OTP...');
+    };
+
+    const handleSubmit = () => {
+        router.push('/reset-password');
     };
 
     useEffect(() => {
@@ -42,33 +47,23 @@ export default function VerifyEmail() {
     }, [timer]);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#8BD6EE] to-[#F8F7F7] w-full flex justify-center items-center">
-            <div className="bg-gradient-to-br from-[#8BD6EE] to-[#F8F7F7] p-12 rounded-2xl shadow-lg w-full max-w-lg h-auto">
-                
-                {/* Icon */}
-                <div className="flex justify-center mb-8"> {/* Increased margin */}
+        <div className="min-h-screen bg-gradient-to-r from-white to-[#E0F7FF] w-full flex justify-center items-center">
+            <div className="bg-gradient-to-br from-[#E0F7FF] to-white p-8 rounded-2xl shadow-gray-300 shadow-lg w-full max-w-md">
+                <div className="flex justify-center mb-8">
                     <div className="bg-white rounded-lg p-3 flex justify-center items-center shadow-md">
                         <BiLogIn className="text-4xl text-black" />
                     </div>
                 </div>
-
-                {/* Heading */}
-                <h1 className="text-2xl font-bold text-center mb-4"> {/* Increased margin */}
+                <h1 className="text-2xl font-bold text-center mb-4">
                     Verify Your Email
                 </h1>
-
-                {/* Instruction Text */}
-                <p className="text-gray-600 text-sm text-center mb-6"> {/* Increased margin */}
+                <p className="text-gray-600 text-sm text-center mb-6">
                     An OTP has been sent to your email. Please enter the 6-digit OTP to verify your account.
                 </p>
-
-                {/* OTP Label */}
-                <p className="text-sm font-semibold text-left mb-6 text-[#5E6061]"> {/* Increased margin */}
+                <p className="text-sm font-semibold text-left mb-6 text-[#5E6061]">
                     Enter OTP
                 </p>
-
-                {/* OTP Input Fields */}
-                <div className="flex justify-between mb-8"> {/* Increased margin */}
+                <div className="flex justify-between mb-8">
                     {otp.map((digit, index) => (
                         <input
                             key={index}
@@ -81,16 +76,13 @@ export default function VerifyEmail() {
                         />
                     ))}
                 </div>
-
-                {/* Submit Button */}
                 <button
                     type="button"
-                    className="w-full bg-[#8BF376] text-xl text-gray-700 font-semibold px-4 py-3 rounded-2xl shadow-md hover:bg-[#6BBE4D] focus:outline-none focus:ring-2 focus:ring-[#93D8EE] mb-8"  
+                    onClick={handleSubmit}
+                    className="w-full bg-[#8BF376] text-xl text-gray-700 font-semibold px-4 py-3 rounded-2xl shadow-md hover:bg-[#6BBE4D] focus:outline-none focus:ring-2 focus:ring-[#93D8EE] mb-8"
                 >
                     Submit
                 </button>
-
-                {/* Resend OTP Section */}
                 <div className="flex justify-center items-center text-sm text-[#5E6061]">
                     <button
                         onClick={handleResendOTP}

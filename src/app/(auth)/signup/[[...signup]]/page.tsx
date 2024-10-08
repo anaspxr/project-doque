@@ -6,21 +6,32 @@ import { BiLogIn } from "react-icons/bi";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from 'react-icons/fa';
 import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
 
 export default function Signup() {
     const [showPassword, setShowPassword] = useState(false);
     const [passwordError, setPasswordError] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const router = useRouter();
 
     const handleRegister = (e: React.FormEvent) => {
         e.preventDefault();
+        setIsSubmitting(true);
+
         const form = e.target as HTMLFormElement;
         const password = (form.elements.namedItem('password') as HTMLInputElement).value;
 
-        if (password.length <= 4) {
+        if (password.length < 4) {
             setPasswordError('Password must be more than 4 characters');
+            setIsSubmitting(false);
         } else {
             setPasswordError('');
             console.log('Registering user...');
+            
+            setTimeout(() => {
+                console.log('User registered successfully');
+                router.push('/signin'); 
+            }, 2000);
         }
     };
 
@@ -37,8 +48,8 @@ export default function Signup() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#8BD6EE] to-[#F8F7F7] w-full flex justify-center items-center">
-            <div className="bg-gradient-to-br from-[#8BD6EE] to-[#F8F7F7] p-8 rounded-2xl shadow-lg w-full max-w-md">
+        <div className="min-h-screen bg-gradient-to-r from-white to-[#E0F7FF] w-full flex justify-center items-center">
+            <div className="bg-gradient-to-br from-[#E0F7FF] to-white p-8 rounded-2xl shadow-gray-300 shadow-lg w-full max-w-md">
                 <div className="flex justify-center mb-6">
                     <div className="bg-white rounded-lg p-3 flex justify-center items-center shadow-md">
                         <BiLogIn className="text-3xl text-black" />
@@ -76,9 +87,12 @@ export default function Signup() {
                     )}
                     <button
                         type="submit"
-                        className="w-full bg-[#8BF376] text-xl text-gray-700 font-semibold px-4 py-3 rounded-2xl shadow-md hover:bg-[#6BBE4D] focus:outline-none focus:ring-2 focus:ring-[#93D8EE]"
+                        className={`w-full bg-[#8BF376] text-xl text-gray-700 font-semibold px-4 py-3 rounded-2xl shadow-md hover:bg-[#6BBE4D] focus:outline-none focus:ring-2 focus:ring-[#93D8EE] ${
+                            isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                        }`}
+                        disabled={isSubmitting}
                     >
-                        Register
+                        {isSubmitting ? 'Registering...' : 'Register'}
                     </button>
                 </form>
                 <div className="flex items-center justify-between my-4">
@@ -96,7 +110,7 @@ export default function Signup() {
                     </Button>
                     <Button
                         onClick={handleGithubSignup}
-                        className="flex items-center justify-center space-x-2 w-full bg-gray-100 text-gray-900 px-4 py-3 rounded-lg hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-[#93D8EE]"
+                        className="flex items-center justify-center space-x-2 w-full bg-gray-100 text-gray-900 px-4 py-3 rounded-lg hover:bg-[#93D8EE] focus:outline-none focus:ring-2 focus:ring-[#93D8EE]"
                     >
                         <FaGithub className="text-xl" />
                         <span className='font-semibold text-[#5E6061]'>GitHub</span>

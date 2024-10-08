@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { BiLogIn } from "react-icons/bi";
 import { RiLockPasswordLine } from "react-icons/ri";
 import Link from 'next/link';
@@ -11,15 +12,25 @@ export default function ResetPassword() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [error, setError] = useState('');
+
+    const router = useRouter();
 
     const handleResetPassword = (e: React.FormEvent) => {
         e.preventDefault();
+        
+        if (password !== confirmPassword) {
+            setError('Passwords do not match. Please try again.');
+            return;
+        }
+        setError('');
         console.log('Password reset:', password);
+        router.push('/home');
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#8BD6EE] to-[#F8F7F7] w-full flex justify-center items-center">
-            <div className="bg-gradient-to-br from-[#8BD6EE] to-[#F8F7F7] p-12 rounded-2xl shadow-lg w-full max-w-md">
+        <div className="min-h-screen bg-gradient-to-r from-white to-[#E0F7FF] w-full flex justify-center items-center">
+            <div className="bg-gradient-to-br from-[#E0F7FF] to-white p-8 rounded-2xl shadow-gray-300 shadow-lg w-full max-w-md">
 
                 <div className="flex justify-center mb-8">
                     <div className="bg-white rounded-lg p-4 flex justify-center items-center shadow-md">
@@ -32,6 +43,8 @@ export default function ResetPassword() {
                 <p className="text-gray-600 text-center mb-8">
                     Enter your new password below.
                 </p>
+
+                {error && <p className="text-red-600 text-center mb-4">{error}</p>} 
 
                 <form onSubmit={handleResetPassword} className="space-y-8">
                     <div className="relative">
@@ -68,7 +81,7 @@ export default function ResetPassword() {
                             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                             className="absolute right-3 top-4 text-[#5E6061]"
                         >
-                            {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+                            {showConfirmPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
                         </button>
                     </div>
 
@@ -81,7 +94,7 @@ export default function ResetPassword() {
                 </form>
 
                 <div className="flex justify-center items-center mt-8 text-sm text-gray-700">
-                    <Link href="/login" className="text-[#242425] hover:underline">
+                    <Link href="/signin" className="text-[#242425] hover:underline">
                         Back to Login
                     </Link>
                 </div>
