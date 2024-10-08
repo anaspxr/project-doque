@@ -20,7 +20,7 @@ const MembersGrid: React.FC<{ members: Member[] }> = ({ members }) => {
               alt={member.name}
               className="w-16 h-16 rounded-full object-cover"
             />
-            <h2 className={`text-sm font-medium mt-3 rounded-xl ${member.online ? 'bg-green-300' : 'text-red-500'}`}>
+            <h2 className={`text-xs font-medium mt-3 rounded-xl ${member.online ? 'bg-green-300' : 'text-red-500'}`}>
               {member.online ? 'Online' : ''}
             </h2>
           </div>

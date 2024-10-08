@@ -33,29 +33,27 @@ export default function Page() {
   };
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen mx-auto">
+    <div className="p-5 bg-gray-100 mx-auto h-full">
       <div className="mb-4">
         <h1 className="text-2xl font-bold text-gray-800">Members</h1>
       </div>
 
-      <div className="border-b border-gray-300 mb-4">
-        <div className="flex justify-between">
+      <div className="border-b border-gray-300 mb-4 relative ">
+        <div className="flex justify-between ">
           <div className="flex space-x-4 mt-2">
             <h2
-              className={`text-base font-semibold cursor-pointer ${
-                activeTab === "members"
-                  ? "border-b-4 border-blue-600"
-                  : "text-gray-700"
-              }`}
+              className={`text-base font-semibold cursor-pointer ${activeTab === "members"
+                  ? "border-b-2 border-blue-600"
+                  : "text-gray-600"
+                }`}
               onClick={() => handleTabSwitch("members")}>
               Members
             </h2>
             <h2
-              className={`text-base font-semibold cursor-pointer ${
-                activeTab === "teams"
-                  ? "border-b-4 border-blue-600"
-                  : "text-gray-700"
-              }`}
+              className={`text-base font-semibold cursor-pointer ${activeTab === "teams"
+                  ? "border-b-2 border-blue-600"
+                  : "text-gray-600"
+                }`}
               onClick={() => handleTabSwitch("teams")}>
               Teams
             </h2>
@@ -76,35 +74,32 @@ export default function Page() {
             </div>
             <div className="flex items-center space-x-4">
               <div
-                className={`p-2 rounded-full cursor-pointer ${
-                  viewType === "grid" ? "bg-red-200" : "bg-transparent"
-                }`}
+                className={`p-2 rounded-full cursor-pointer ${viewType === "grid" ? "bg-red-200" : "bg-transparent"
+                  }`}
                 onClick={() => handleViewSwitch("grid")}
                 title="Grid View">
                 <IoGrid
-                  className={`text-gray-600 text-xl ${
-                    viewType === "grid" ? "text-blue-600" : ""
-                  }`}
+                  className={`text-gray-600 text-xl ${viewType === "grid" ? "text-blue-600" : ""
+                    }`}
                 />
               </div>
               <div
-                className={`p-2 rounded-full cursor-pointer ${
-                  viewType === "list" ? "bg-red-200" : "bg-transparent"
-                }`}
+                className={`p-2 rounded-full cursor-pointer ${viewType === "list" ? "bg-red-200" : "bg-transparent"
+                  }`}
                 onClick={() => handleViewSwitch("list")}
                 title="List View">
                 <IoList
-                  className={`text-gray-600 text-2xl ${
-                    viewType === "list" ? "text-blue-600" : ""
-                  }`}
+                  className={`text-gray-600 text-2xl ${viewType === "list" ? "text-blue-600" : ""
+                    }`}
                 />
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div className="h-[72vh] overflow-y-auto">{renderContent()}</div>
+      <div>
+        <div>{renderContent()}</div>
+      </div>
     </div>
   );
 }
