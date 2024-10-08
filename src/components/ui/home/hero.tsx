@@ -20,15 +20,12 @@ export default function Home() {
 
   return (
     <div className="relative w-full">
-      {/* Top Gradient Background */}
       <div className="top-0 left-0 w-full h-full bg-gradient-to-r from-white via-[#E0F7FF] to-white">
-        {/* Navbar */}
         <header className="absolute top-0 left-0 w-full py-6 flex justify-between items-center px-10">
           <div className="flex items-center space-x-2">
             <FaTasks className="text-2xl text-black" />
             <h1 className="font-megrim text-black font-bold text-2xl">DOQUE</h1>
           </div>
-          {/* Login Button */}
           <div className="flex justify-end px-5 py-2">
             <button className="relative h-12 px-6 text-lg font-semibold text-black bg-transparent rounded-lg overflow-hidden border border-x-4  hover:border-black transition duration-150 ease-in-out">
               <span className="relative z-10">Login</span>
@@ -36,7 +33,6 @@ export default function Home() {
           </div>
         </header>
 
-        {/* Main Hero Section */}
         <section className="relative text-center pt-32 pb-10 animate-fadeIn">
           <div className="relative z-10 m-16">
             <h1 className="text-9xl font-bold">
@@ -66,17 +62,13 @@ export default function Home() {
               simple task management tool.
             </p>
 
-            {/* Button */}
             <button className="my-8 relative inline-flex items-center justify-center h-12 px-4 text-lg font-semibold text-[#36395A] bg-[#FCFCFD] rounded-lg border-0 shadow-lg transition-all duration-150 ease-in-out transform active:translate-y-0 hover:translate-y-[-2px] focus:shadow-outline focus:outline-none focus:ring-2 focus:ring-[#D6D6E7] focus:ring-opacity-50 hover:shadow-[rgba(45,35,66,0.4)_0_4px_8px,rgba(45,35,66,0.3)_0_7px_13px_-3px,#D6D6E7_0_-3px_0_inset] active:shadow-[rgba(214,214,231,1)_0_3px_7px_inset]">
               Get Started Free
             </button>
           </div>
 
-          {/* Image inside a box */}
           <section className="relative py-20">
-            {/* Wrapper for Text and Image */}
             <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-              {/* Left Side - Text */}
               <div
                 data-aos="fade-right"
                 className="md:w-1/3 md:order-1 order-2"
@@ -95,7 +87,6 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Right Side - Image */}
               <div
                 data-aos="fade-left"
                 className="md:w-1/2 md:order-2 order-1 transition-transform duration-500 ease-in-out transform hover:translate-x-2"
@@ -112,7 +103,6 @@ export default function Home() {
           </section>
         </section>
 
-        {/* Features Section */}
         <div data-aos="fade-up">
           <Feature />
         </div>
@@ -121,12 +111,10 @@ export default function Home() {
           <ChatFeature />
         </div>
 
-        {/* Services Section */}
         <div data-aos="fade-up">
           <Services />
         </div>
 
-        {/* Pricing Section */}
         <div data-aos="fade-up">
           <Pricing />
         </div>

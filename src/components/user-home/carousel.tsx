@@ -5,11 +5,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Card from "@/components/user-home/card";
 
 interface CarouselProps {
-    cards: Array<{
-        title: string;
-        description?: string;
-        image: string;
-    }>;
+    cards: { title: string; description?: string; image: string }[];
 }
 
 export default function Carousel({ cards }: CarouselProps) {
@@ -19,15 +15,13 @@ export default function Carousel({ cards }: CarouselProps) {
         <div className="relative">
             <div ref={carouselRef} className="overflow-hidden">
                 <div className="flex">
-                    {cards.map((card, index) => (
-                        <div key={index} className="min-w-0 shrink-0 grow-0 basis-[250px] p-2">
-                            <Card title={card.title} image={card.image} />
+                    {cards.map(({ title, image }, index) => (
+                        <div key={index} className="shrink-0 basis-[250px] p-2">
+                            <Card title={title} image={image} />
                         </div>
                     ))}
                 </div>
             </div>
         </div>
     );
-};
-
-
+}

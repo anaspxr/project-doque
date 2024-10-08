@@ -5,9 +5,9 @@ import { Button } from '../ui/button';
 
 export default function InviteButton() {
     return (
-        <Button className="px-6 py-3 bg-[#EDF1F4] text-black text-lg rounded-3xl hover:bg-[#EDF1F4]/90 mr-6 flex items-center shadow-lg">
+        <Button className="px-4 py-2 bg-[#EDF1F4] text-black text-sm rounded-2xl hover:bg-[#EDF1F4]/90 mr-4 flex items-center shadow-md">
             Invite
-            <LuUserPlus className="ml-2 w-5 h-5" />
+            <LuUserPlus className="ml-1 w-3 h-3" />
         </Button>
     );
 };
