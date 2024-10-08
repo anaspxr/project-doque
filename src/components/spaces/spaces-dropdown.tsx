@@ -16,6 +16,7 @@ import { DropdownMenuArrow } from "@radix-ui/react-dropdown-menu";
 export default function SpacesMenu() {
   const { workSpaceId, spaceId } = useParams();
   const spaceDetails = spaces[Number(spaceId)];
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
@@ -23,7 +24,7 @@ export default function SpacesMenu() {
         asChild>
         <span className="pl-4 pr-1 inline-block -ml-4 text-xs">
           <Button size="sm" variant="ghost">
-            {spaceDetails.name}
+            {spaceDetails?.name || "Space"}
           </Button>
         </span>
       </DropdownMenuTrigger>

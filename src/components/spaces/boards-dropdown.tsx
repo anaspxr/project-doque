@@ -16,7 +16,7 @@ import { DropdownMenuArrow } from "@radix-ui/react-dropdown-menu";
 
 export default function BoardsMenu() {
   const { workSpaceId, spaceId, boardId } = useParams();
-  const boards = spaces[Number(spaceId)].contents.boards;
+  const boards = spaces[Number(spaceId)]?.contents.boards || [];
 
   return (
     <DropdownMenu>

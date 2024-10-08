@@ -6,7 +6,8 @@ import React from "react";
 
 export function CreatedDate() {
   const { spaceId, boardId } = useParams();
-  const currentBoard = spaces[Number(spaceId)].contents.boards[Number(boardId)];
+  const currentBoard =
+    spaces[Number(spaceId)]?.contents.boards[Number(boardId)];
   return (
     <>
       {currentBoard && (
