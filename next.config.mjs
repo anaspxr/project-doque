@@ -12,6 +12,11 @@ const nextConfig = {
         hostname: 'encrypted-tbn0.gstatic.com', 
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'imgv3.fotor.com', 
+        port: '',
+      },
     ],
   },
 };
