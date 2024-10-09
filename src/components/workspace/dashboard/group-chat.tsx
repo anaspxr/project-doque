@@ -7,15 +7,12 @@ interface MessageProps {
   hasNotification?: boolean;
 }
 
-function ChatList({ name, image, hasNotification }: MessageProps) {
+function ChatList({ name, hasNotification }: MessageProps) {
   return (
     <div className="flex flex-col items-center relative">
       <div className="relative">
-      <Avatar>
-          <AvatarImage
-            src=""
-            alt="Project Icon"
-          />
+        <Avatar>
+          <AvatarImage src="" alt="Project Icon" />
           <AvatarFallback />
         </Avatar>
         {hasNotification && (
@@ -30,7 +27,7 @@ function ChatList({ name, image, hasNotification }: MessageProps) {
 export default function GroupChat() {
   const messages = [
     { name: "Sinan", image: "/path-to-image1.jpg", hasNotification: false },
-    { name: "Sinan", image: "/path-to-image2.jpg", hasNotification: true }, 
+    { name: "Sinan", image: "/path-to-image2.jpg", hasNotification: true },
     { name: "Alixa", image: "/path-to-image3.jpg", hasNotification: false },
     { name: "Alixa", image: "/path-to-image4.jpg", hasNotification: false },
     { name: "Alixa", image: "/path-to-image5.jpg", hasNotification: false },
@@ -53,4 +50,3 @@ export default function GroupChat() {
     </div>
   );
 }
-

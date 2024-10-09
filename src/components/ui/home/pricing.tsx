@@ -1,17 +1,7 @@
-"use client";
-
-import React, { useEffect } from "react";
-import AOS from "aos";
+import React from "react";
 import "aos/dist/aos.css";
-
-interface PricingPlan {
-  title: string;
-  description: string;
-  features: string[];
-  price: string;
-  colorFrom: string;
-  colorTo: string;
-}
+import { PricingPlan } from "@/types/subscriptions";
+import PlanButton from "./plan-button";
 
 const pricingData: PricingPlan[] = [
   {
@@ -53,14 +43,6 @@ const pricingData: PricingPlan[] = [
 ];
 
 export default function Pricing() {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      easing: "ease-in-out",
-      once: true,
-    });
-  }, []);
-
   return (
     <section className="py-20 bg-white">
       <div className="max-w-6xl mx-auto px-6 text-center">
@@ -75,14 +57,12 @@ export default function Pricing() {
               key={plan.title}
               data-aos="fade-up"
               data-aos-delay={index * 100}
-              className="shadow-lg rounded-lg overflow-hidden"
-            >
+              className="shadow-lg rounded-lg overflow-hidden">
               <div
                 className="p-6 text-white"
                 style={{
                   background: `linear-gradient(to right, ${plan.colorFrom}, ${plan.colorTo})`,
-                }}
-              >
+                }}>
                 <h3 className="text-2xl font-bold">{plan.title}</h3>
               </div>
 
@@ -95,25 +75,8 @@ export default function Pricing() {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-6 text-2xl text-gray-600">
-                  {plan.price}
-                </p>
-
-                <button
-                  className={`mt-4 h-12 px-6 text-white font-bold rounded-lg shadow-lg transition duration-500 ease-in-out transform active:scale-95 focus:outline-none focus:ring-2 focus:ring-opacity-50`}
-                  style={{
-                    background: `linear-gradient(to right, ${plan.colorFrom}, ${plan.colorTo})`,
-                    border: `1px solid ${plan.colorFrom}`,
-                  }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.background = `linear-gradient(to right, ${plan.colorTo}, ${plan.colorFrom})`)
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.background = `linear-gradient(to right, ${plan.colorFrom}, ${plan.colorTo})`)
-                  }
-                >
-                  {plan.price === "Free" ? "Get Started" : "Choose Plan"}
-                </button>
+                <p className="mt-6 text-2xl text-gray-600">{plan.price}</p>
+                <PlanButton plan={plan} />
               </div>
             </div>
           ))}

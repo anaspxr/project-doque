@@ -73,6 +73,8 @@ export default function BoardsProvider({
   };
 
   const moveColumn = (activeId: UniqueIdentifier, overId: UniqueIdentifier) => {
+    console.log("column mmve");
+
     setColumns((prevColumns) => {
       // Find the index of the active and over columns and move the active column to the over column's position
       const activeColumnIndex = prevColumns.findIndex(
@@ -90,8 +92,6 @@ export default function BoardsProvider({
     overId: UniqueIdentifier
   ) => {
     setTasks((tasks) => {
-      console.log("triggerd 1");
-
       const activeIndex = tasks.findIndex((task) => task.id === activeId);
       const overIndex = tasks.findIndex((task) => task.id === overId);
       if (tasks[activeIndex].section !== tasks[overIndex].section) {
@@ -107,7 +107,6 @@ export default function BoardsProvider({
     overId: UniqueIdentifier
   ) => {
     setTasks((tasks) => {
-      console.log("triggerd 2");
       const activeIndex = tasks.findIndex((task) => task.id === activeId);
 
       tasks[activeIndex].section = overId.toString();

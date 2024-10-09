@@ -1,5 +1,6 @@
-"use client"
+"use client";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Image from "next/image";
 import React, { useState } from "react";
 
 type Project = {
@@ -13,24 +14,24 @@ const projects: Project[] = [
     title: "Website Redesign",
     description:
       "Redesigning the company's website to improve user experience and responsiveness...",
-    image: "/profile-pic1.jpg", 
+    image: "/profile-pic1.jpg",
   },
   {
     title: "Mobile App Development",
     description:
       "Building a cross-platform mobile application to enhance user accessibility...",
-    image: "/profile-pic2.jpg", 
+    image: "/profile-pic2.jpg",
   },
   {
     title: "E-commerce Platform",
     description:
       "Developing an e-commerce platform with advanced search and recommendation systems...",
-    image: "/profile-pic3.jpg", 
+    image: "/profile-pic3.jpg",
   },
 ];
 
 const ProjectCard: React.FC = () => {
-  const [selectedProjectIndex, setSelectedProjectIndex] = useState<number>(0); 
+  const [selectedProjectIndex, setSelectedProjectIndex] = useState<number>(0);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleProjects = () => {
@@ -39,39 +40,33 @@ const ProjectCard: React.FC = () => {
 
   const handleProjectClick = (index: number) => {
     setSelectedProjectIndex(index);
-    setIsOpen(false); 
+    setIsOpen(false);
   };
 
-  
   const displayedProject = projects[selectedProjectIndex];
-  
-  const otherProjects = projects.filter((_, index) => index !== selectedProjectIndex);
+
+  const otherProjects = projects.filter(
+    (_, index) => index !== selectedProjectIndex
+  );
 
   return (
     <div className="w-[257px] h-[96px] overflow-hidden bg-white border border-gray-200 rounded-lg shadow-md p-2">
       <div className="flex items-center space-x-4">
-      <Avatar>
-          <AvatarImage
-            src={displayedProject.image}
-            alt="Project Icon"
-          />
+        <Avatar>
+          <AvatarImage src={displayedProject.image} alt="Project Icon" />
           <AvatarFallback />
         </Avatar>
         <div className="flex-grow">
           <h3 className="text-sm">{displayedProject.title}</h3>
         </div>
-        <button
-          onClick={toggleProjects}
-          className="focus:outline-none"
-        >
+        <button onClick={toggleProjects} className="focus:outline-none">
           {isOpen ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
               fill="none"
               viewBox="0 0 20 20"
-              stroke="currentColor"
-            >
+              stroke="currentColor">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -85,8 +80,7 @@ const ProjectCard: React.FC = () => {
               className="h-6 w-6"
               fill="none"
               viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
+              stroke="currentColor">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -97,7 +91,9 @@ const ProjectCard: React.FC = () => {
           )}
         </button>
       </div>
-      <p className="text-[10px]  text-gray-500">{displayedProject.description}</p>
+      <p className="text-[10px]  text-gray-500">
+        {displayedProject.description}
+      </p>
 
       {isOpen && otherProjects.length > 0 && (
         <div className="mt-4">
@@ -105,12 +101,15 @@ const ProjectCard: React.FC = () => {
             <div
               key={index}
               className="border-t border-gray-300 pt-4 cursor-pointer"
-              onClick={() => handleProjectClick(
-                projects.findIndex(p => p.title === project.title)
-              )}
-            >
+              onClick={() =>
+                handleProjectClick(
+                  projects.findIndex((p) => p.title === project.title)
+                )
+              }>
               <div className="flex items-center space-x-4">
-                <img
+                <Image
+                  width={48}
+                  height={48}
                   src={project.image}
                   alt="Profile"
                   className="w-12 h-12 rounded-full"

@@ -11,7 +11,7 @@ export default function Page({
   params: { workSpaceId: string; spaceId: string; boardId: string[] };
 }) {
   const spaceDetails = spaces[Number(params.spaceId)];
-  const board = spaceDetails.contents.boards[Number(params.boardId[0])];
+  const board = spaceDetails?.contents.boards[Number(params.boardId[0])];
   if (params.boardId[2]) {
     redirect(`/w/${params.workSpaceId}/${params.spaceId}/${params.boardId[1]}`);
   }

@@ -21,14 +21,15 @@ export default function Page({ params }: { params: { spaceId: 1 | 2 | 3 } }) {
         </Button>
       </div>
       <div className="flex flex-wrap gap-4">
-        {spaceDetails.contents.boards.map((board, i) => (
-          <BoardsCard
-            board={board}
-            i={i.toString()}
-            spaceId={`${params.spaceId}`}
-            key={i}
-          />
-        ))}
+        {spaceDetails &&
+          spaceDetails.contents.boards.map((board, i) => (
+            <BoardsCard
+              board={board}
+              i={i.toString()}
+              spaceId={`${params.spaceId}`}
+              key={i}
+            />
+          ))}
       </div>
     </div>
   );

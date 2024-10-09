@@ -49,6 +49,7 @@ export default function SectionContainer({
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
+    scrollbarGutter: "stable",
     border: `1px solid ${section.color || "#FEE485"}`,
   };
 
@@ -56,7 +57,7 @@ export default function SectionContainer({
     <div
       style={style}
       ref={setNodeRef}
-      className={` w-72 h-[600px] flex-shrink-0 p-4 rounded-md cursor-default shadow-sm border overflow-x-auto bg-white
+      className={` w-72 h-[600px] flex-shrink-0 p-4 rounded-md cursor-default shadow-sm border overflow-y-auto bg-white
        ${isDragging && !isOverLay && "opacity-50"} `}
       {...attributes}>
       <div
@@ -99,7 +100,7 @@ export default function SectionContainer({
         className="flex gap-2 items-center my-2 ">
         Create new task <FaPlus size={10} />
       </Button>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 ">
         <SortableContext
           items={tasksIds}
           strategy={verticalListSortingStrategy}>

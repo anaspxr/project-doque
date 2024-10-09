@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useEffect } from "react";
+import React from "react";
 import {
   CheckCircleIcon,
   CogIcon,
@@ -9,7 +7,6 @@ import {
   ChartBarIcon,
   UsersIcon,
 } from "@heroicons/react/outline";
-import AOS from "aos";
 import "aos/dist/aos.css";
 
 interface Service {
@@ -65,14 +62,6 @@ const servicesData: Service[] = [
 ];
 
 export default function Services() {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      easing: "ease-in-out",
-      once: true,
-    });
-  }, []);
-
   return (
     <section className="py-20">
       <div className="max-w-6xl mx-auto text-center">
@@ -80,7 +69,7 @@ export default function Services() {
           How <span className="font-bold">DOQUE</span> Helps You
         </h2>
         <p className="text-gray-600 text-lg mt-4">
-          Here's how our task management system makes your life easier.
+          Here&apos;s how our task management system makes your life easier.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
@@ -88,9 +77,8 @@ export default function Services() {
             <div
               key={service.id}
               data-aos="fade-up"
-              data-aos-delay={index * 100} 
-              className="relative p-6 transition-transform duration-300 ease-in-out hover:scale-105"
-            >
+              data-aos-delay={index * 100}
+              className="relative p-6 transition-transform duration-300 ease-in-out hover:scale-105">
               <div className="flex items-center mt-2">
                 {service.icon}
                 <h3 className="text-2xl font-bold ml-2">{service.title}</h3>

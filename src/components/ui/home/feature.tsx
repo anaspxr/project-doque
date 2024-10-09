@@ -1,5 +1,3 @@
-"use client";
-
 interface Feature {
   icon: string;
   title: string;
@@ -52,8 +50,7 @@ const Feature: React.FC = () => {
         {features.map((feature, index) => (
           <div
             key={index}
-            className="p-6 bg-white/30 backdrop-blur-md rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out text-center"
-          >
+            className="p-6 bg-white/30 backdrop-blur-md rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out text-center">
             <div className="text-4xl mb-4">{feature.icon}</div>
             <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
             <p className="text-gray-600">{feature.description}</p>

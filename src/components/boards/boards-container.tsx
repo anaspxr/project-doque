@@ -91,14 +91,18 @@ export default function BoardsContainer() {
 
     if (taskIsActive && isOverATask) {
       // If the active item is a task and the over item is a task, swap the positions of the tasks
-      swapTasksInSameColumn(activeId, overId);
+      setTimeout(() => {
+        swapTasksInSameColumn(activeId, overId);
+      }, 10); // This is to prevent the unnecessary re-rendering caused by layout shifts like scrollbar appearing
     }
 
     const isOverAColumn = over.data.current?.type === "section";
 
     if (taskIsActive && isOverAColumn) {
       // If the active item is a task and the over item is a column, move the task to the column
-      moveTaskToColumn(activeId, overId);
+      setTimeout(() => {
+        moveTaskToColumn(activeId, overId);
+      }, 10);
     }
   };
 
@@ -124,8 +128,8 @@ export default function BoardsContainer() {
       id="dnd-context-id"
       sensors={sensors}
       onDragStart={handleDragStart}
-      onDragEnd={handleDragEnd}
-      onDragOver={handleDragOver}>
+      onDragOver={handleDragOver}
+      onDragEnd={handleDragEnd}>
       <div className="w-full">
         <Button
           onClick={createColumn}

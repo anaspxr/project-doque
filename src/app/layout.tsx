@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Poppins } from 'next/font/google';
+import { Poppins } from "next/font/google";
 import { CalenderContextProvider } from "@/contexts/CalenderContext";
 import "./globals.css";
+import UserContextProvider from "@/contexts/user-context";
 
 export const metadata: Metadata = {
   title: "DOQUE",
@@ -22,7 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <CalenderContextProvider>{children}</CalenderContextProvider>
+        <UserContextProvider>
+          <CalenderContextProvider>{children}</CalenderContextProvider>
+        </UserContextProvider>
       </body>
     </html>
   );
