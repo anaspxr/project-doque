@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { FaTasks } from "react-icons/fa";
 
 interface Option {
@@ -38,8 +39,7 @@ export default function Onboarding({ onContinue }: OnboardingProps) {
               <button
                 key={option.label}
                 onClick={() => onContinue(option.label)}
-                className="w-full py-3 px-6 text-left bg-transparent text-black text-center rounded-lg shadow-lg transition duration-300 hover:shadow-xl"
-              >
+                className="w-full py-3 px-6 text-left bg-transparent text-black text-center rounded-lg shadow-lg transition duration-300 hover:shadow-xl">
                 {option.label}
               </button>
             ))}
@@ -47,14 +47,15 @@ export default function Onboarding({ onContinue }: OnboardingProps) {
 
           <button
             onClick={() => onContinue("Skipped")}
-            className="mt-6 text-gray-500 hover:text-gray-800 underline text-center"
-          >
+            className="mt-6 text-gray-500 hover:text-gray-800 underline text-center">
             Skip
           </button>
         </div>
 
         <div className="hidden md:flex w-1/2 justify-center items-center">
-          <img
+          <Image
+            width={1024}
+            height={768}
             src="/images/onboarding1.jpg"
             alt="Onboarding Illustration"
             className="rounded-full shadow-lg w-72 h-72 object-cover"

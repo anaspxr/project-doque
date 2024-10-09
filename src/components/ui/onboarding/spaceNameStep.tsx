@@ -32,7 +32,7 @@ export default function SpaceNameStep({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-32">
         <div className="mt-14 space-y-4 flex flex-col">
           <h2 className="text-3xl font-semibold text-black">Great!</h2>
-          <p className="text-lg text-gray-700">Let's create your first board</p>
+          <p className="text-lg text-gray-700">Let&apos;s create your first board</p>
           <input
             type="text"
             placeholder="Enter Your Space Name..."

@@ -1,7 +1,6 @@
 "use client";
 import Calendar from "@/components/workspace/calendar/calendar";
 import MonthCalendar from "@/components/workspace/calendar/month-calendar";
-import RightSideBar from "@/components/workspace/right-side-bar";
 import WeekCalendar from "@/components/workspace/calendar/week-calendar";
 import React, { useState } from "react";
 
@@ -35,8 +34,7 @@ function Page() {
                   className={`px-4 py-2 rounded-xl focus:outline-none ${
                     activeTab === tab ? "bg-gray-300 text-black" : "text-black "
                   }`}
-                  onClick={() => setActiveTab(tab as "Day" | "Week" | "Month")}
-                >
+                  onClick={() => setActiveTab(tab as "Day" | "Week" | "Month")}>
                   {tab}
                 </button>
               ))}

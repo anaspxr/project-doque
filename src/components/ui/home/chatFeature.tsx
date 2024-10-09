@@ -1,11 +1,15 @@
+import Image from "next/image";
+
 export default function ChatFeature() {
   return (
     <section className="flex flex-col md:flex-row items-center justify-between py-16 px-8 bg-white">
       <div className="md:w-1/2 mb-8 md:mb-0">
-        <img
+        <Image
+          width={1024}
+          height={768}
           src="/images/heroMessage.png"
           alt="Group Chat Feature"
-          className="w-full h-auto rounded-lg shadow-md"
+          className="rounded-lg shadow-md"
         />
       </div>
 
