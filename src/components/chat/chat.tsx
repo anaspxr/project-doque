@@ -5,14 +5,13 @@ import MessageList from "./chat-list";
 import MessageInput from "./chat-input";
 import MessageIcon from "./chat-icon";
 import DeleteButton from "./delete-button";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@/lib/store";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/lib/store";
 import {
   deleteMessage,
   fetchMessages,
 } from "@/lib/store/features/message-slice";
 import { setWorkSpaceId } from "@/lib/store/features/workspace-slice";
-import { useAppSelector } from "@/lib/store/hooks";
 import { useParams } from "next/navigation";
 import { IoMdRefresh } from "react-icons/io";
 
@@ -68,8 +67,7 @@ export default function Chat() {
       {isVisible && (
         <div
           ref={chatRef}
-          className="fixed z-50 top-0 right-0 h-screen w-4/5 sm:w-3/6 bg-white shadow-lg rounded-l-lg flex flex-col  dark:bg-darkBg"
-        >
+          className="fixed z-50 top-0 right-0 h-screen w-4/5 sm:w-3/6 bg-white shadow-lg rounded-l-lg flex flex-col  dark:bg-darkBg">
           <div className="flex justify-between items-center mt-4 border-b pb-2 px-6">
             <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
               Messages
