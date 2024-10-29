@@ -37,7 +37,7 @@ const ProjectCard: React.FC = () => {
     spaces?.filter((project) => project._id !== selectedProjectId) || [];
 
   return (
-    <div className="relative w-full bg-white  rounded-lg shadow-md p-4 dark:bg-gray-800">
+    <div className="relative w-full bg-white  rounded-lg shadow-md p-4  dark:bg-darkBg">
       {displayedProject ? (
         <div className="flex items-center justify-between">
           <div className="flex-grow">
@@ -90,7 +90,7 @@ const ProjectCard: React.FC = () => {
         </NewSpaceButton>
       )}
       {isOpen && otherProjects.length > 0 && (
-        <div className="absolute left-0 w-full max-h-72 mt-4 bg-white border border-gray-200 rounded-lg shadow-lg z-10 overflow-y-auto dark:bg-gray-900 ">
+        <div className="absolute left-0 w-full max-h-72 mt-4 bg-white border border-gray-200 rounded-lg shadow-lg z-10 overflow-y-auto  dark:bg-darkBg ">
           {otherProjects.map((project) => (
             <div
               key={project._id}

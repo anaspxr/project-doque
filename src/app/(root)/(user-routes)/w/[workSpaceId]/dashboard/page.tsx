@@ -9,7 +9,7 @@ export default function DashboardPage() {
         <DashboardProject />
       </div>
       <div className="flex flex-col lg:basis-2/5 w-full space-y-4">
-        <CalendarSmall className="bg-white rounded-lg shadow-md dark:bg-gray-950 mb-3" />
+        <CalendarSmall className="bg-white rounded-lg shadow-md  dark:bg-darkBg mb-3" />
         <GroupChat />
       </div>
     </div>

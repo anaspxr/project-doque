@@ -19,7 +19,7 @@ export default function ListBoardView() {
       <Link href={`/w/${workSpaceId}/spaces/${spaceId}`} className="h-full">
         <button
           className={clsx(
-            "w-8 sm:w-24 h-full p-0 flex items-center justify-center gap-1",
+            "w-8 sm:w-24 h-full p-0 flex items-center justify-center gap-1 dark:hover:bg-gray-800",
             {
               "bg-gray-600 text-zinc-100": !isList,
               "hover:bg-zinc-200": isList,
@@ -32,10 +32,10 @@ export default function ListBoardView() {
       <Link href={`/w/${workSpaceId}/spaces/${spaceId}/1`} className="h-full">
         <button
           className={clsx(
-            "w-8 sm:w-24 h-full p-0 flex gap-1 justify-center items-center",
+            "w-8 sm:w-24 h-full p-0 flex gap-1 justify-center items-center dark:hover:bg-gray-800",
             {
               "bg-gray-600 text-zinc-100": isList,
-              "hover:bg-zinc-200": !isList,
+              "hover:bg-zinc-200 ": !isList,
             }
           )}>
           <List />

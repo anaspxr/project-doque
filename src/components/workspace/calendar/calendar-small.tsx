@@ -224,7 +224,7 @@ const CalendarSmall = ({ className }: { className?: string }) => {
                 ? "bg-black bg-opacity-10 text-white rounded-full dark:bg-gray-500 dark:text-white"
                 : isToday(day) 
                 ? "bg-blue-500 text-white rounded-full "
-                : "text-gray-700 hover:bg-gray-200 rounded-full dark:text-white"
+                : "text-gray-700 hover:bg-gray-200 rounded-full dark:text-white dark:hover:text-black"
             }`}
             onClick={() => setChosenDate(cloneDay)}
           >

@@ -24,7 +24,7 @@ const TaskList: React.FC = () => {
     : false;
 
   return (
-    <div className="w-full h-72 bg-white border border-gray-200 rounded-lg shadow-md p-2 mt-2 dark:bg-zinc-900 ">
+    <div className="w-full h-72 bg-white border border-gray-200 rounded-lg shadow-md p-2 mt-2  dark:bg-darkBg ">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-sm">Task Lists</h2>
         <Link href={`/w/${workSpaceId}/spaces/${selectedProjectId}`}>

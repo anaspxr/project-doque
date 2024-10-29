@@ -52,13 +52,11 @@ const CommentsList = () => {
   }, [workSpaceId]);
 
   const handleRefreshClick = () => {
-    setIsRotating(true); // Set rotating state to true
+    setIsRotating(true); 
     dispatch(fetchMessages());
-
-    // Reset rotation state after the animation completes
     setTimeout(() => {
       setIsRotating(false);
-    }, 500); // Duration of the rotation animation (match it with your CSS)
+    }, 500); 
   };
 
   return (

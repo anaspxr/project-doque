@@ -12,12 +12,28 @@ import {
   fetchMessages,
 } from "@/lib/store/features/message-slice";
 import { setWorkSpaceId } from "@/lib/store/features/workspace-slice";
+import { useAppSelector } from "@/lib/store/hooks";
+import { useParams } from "next/navigation";
+import { IoMdRefresh } from "react-icons/io";
 
 export default function Chat() {
   const dispatch = useDispatch<AppDispatch>();
   const [isVisible, setIsVisible] = useState(false);
   const chatRef = useRef<HTMLDivElement>(null);
-  const { workSpaceId } = useSelector((state: RootState) => state.workspace);
+  const { workSpaceId }: { workSpaceId: string } = useParams();
+  const [isRotating, setIsRotating] = useState(false);
+
+  useEffect(() => {
+    dispatch(fetchMessages());
+  }, [workSpaceId]);
+
+  const handleRefreshClick = () => {
+    setIsRotating(true);
+    dispatch(fetchMessages());
+    setTimeout(() => {
+      setIsRotating(false);
+    }, 500);
+  };
 
   const handleDelete = async () => {
     dispatch(setWorkSpaceId(workSpaceId));
@@ -52,10 +68,23 @@ export default function Chat() {
       {isVisible && (
         <div
           ref={chatRef}
-          className="fixed z-50 top-0 right-0 h-screen w-4/5 sm:w-3/6 bg-white shadow-lg rounded-l-lg flex flex-col">
+          className="fixed z-50 top-0 right-0 h-screen w-4/5 sm:w-3/6 bg-white shadow-lg rounded-l-lg flex flex-col  dark:bg-darkBg"
+        >
           <div className="flex justify-between items-center mt-4 border-b pb-2 px-6">
-            <h2 className="text-lg font-semibold text-gray-900">Messages</h2>
-            <DeleteButton onDelete={() => handleDelete()} />
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+              Messages
+            </h2>
+            <div className="flex gap-2">
+              <DeleteButton onDelete={() => handleDelete()} />
+              <div className="mt-1">
+                <IoMdRefresh
+                  onClick={handleRefreshClick}
+                  className={`cursor-pointer transition-transform duration-500 ${
+                    isRotating ? "rotate-180" : ""
+                  } hover:text-gray-600 dark:hover:text-gray-400`}
+                />
+              </div>
+            </div>
           </div>
 
           <div className="flex-grow max-h-[calc(100vh-8rem)] overflow-y-auto">

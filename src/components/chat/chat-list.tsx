@@ -69,17 +69,17 @@ export default function MessageList() {
               </Avatar>
             )}
   
-            <div className="flex-grow bg-white rounded-lg shadow-md p-3 border border-gray-200 max-w-56 sm:max-w-lg md:max-w-2xl">
+            <div className="flex-grow bg-white rounded-lg shadow-md p-3 border border-gray-200 max-w-56 sm:max-w-lg md:max-w-2xl dark:bg-gray-800">
               <div className="flex flex-col sm:flex-row justify-between">
-                <p className="text-sm font-medium text-gray-900">
+                <p className="text-sm font-medium text-gray-900 dark:text-white">
                   {item.sender?.firstName}
                 </p>
-                <p className="text-xs text-gray-500 sm:text-right">
+                <p className="text-xs text-gray-500 sm:text-right dark:text-white">
                   {formatTimestamp(item.timestamp)}
                 </p>
               </div>
   
-              <p className="mt-1 text-gray-700 whitespace-pre-wrap break-words">
+              <p className="mt-1 text-gray-700 whitespace-pre-wrap break-words dark:text-white">
                 {item.content}
               </p>
             </div>

@@ -171,9 +171,9 @@ const StatusColumn: React.FC<StatusColumnProps> = ({
         </div>
         <div className="px-1 flex justify-center gap-2">
           <div
-            className="cursor-pointer border rounded-md p-1 hover:bg-gray-100"
+            className="cursor-pointer border rounded-md p-1 dark:border-none dark:hover:bg-gray-800"
             onClick={handleEditLabelClick}>
-            <FaEdit color="#000" />
+            <FaEdit  />
           </div>
           <ColorSelector currentColor={color} listId={id} name={currentLabel} />
           <AlertConfirm
