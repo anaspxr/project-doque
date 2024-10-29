@@ -25,7 +25,7 @@ export default function Pagination({
   };
 
   return (
-    <div className="flex justify-center mt-4 space-x-4">
+    <div className="flex justify-center mt-2 sm:mt-4 ml-10 sm:ml-0 lg:ml-0 space-x-4">
       <button
         className="flex items-center px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500"
         disabled={currentPage === 1}

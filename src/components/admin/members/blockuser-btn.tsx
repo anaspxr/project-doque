@@ -31,7 +31,7 @@ export default function StatusButton({
   };
 
   return (
-    <div className="relative">
+    <div className="relative flex justify-start gap-2 sm:flex-col lg:flex-col">
       <button
         onClick={handleDropdown}
         className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-200"
@@ -40,7 +40,7 @@ export default function StatusButton({
       </button>
 
       {showDropdown && (
-        <div className="absolute right-0 mt-2 w-32 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-lg z-10">
+        <div className="absolute  right-0 mt-2 w-32 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-lg z-10">
           <ul className="py-1">
             <li
               onClick={() => toggleStatus(false)}
@@ -58,7 +58,7 @@ export default function StatusButton({
         </div>
       )}
 
-      <div className="flex items-center mt-2">
+      <div className="flex items-center">
         {isBlocked ? (
           <span className="text-red-500">
             <FaLock />

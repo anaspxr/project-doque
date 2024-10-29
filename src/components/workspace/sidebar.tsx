@@ -23,7 +23,7 @@ import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
 import { fetchWorkspaceUser } from "@/lib/store/features/userSlice";
 import { fetchSpacesData } from "@/lib/store/thunks/space-thunks";
 import { EditWorkSpace } from "./edit-workspace";
-import { BsLayoutSidebarInset } from "react-icons/bs";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 interface SidebarIcon {
   icon: ReactNode;
@@ -56,7 +56,7 @@ const Sidebar: React.FC = () => {
 
   const sidebarItems: SidebarIcon[] = [
     {
-      icon: <AiFillHome className='text-xl' />,
+      icon: <AiFillHome className="text-xl" />,
       label: "Home",
       href: "/",
     },
@@ -108,8 +108,8 @@ const Sidebar: React.FC = () => {
   }, [workSpaceId]);
 
   const toggleCollapse = () => {
-    setIsCollapsed(!isCollapsed); 
-    setDropdownOpen(false)
+    setIsCollapsed(!isCollapsed);
+    setDropdownOpen(false);
   };
 
   return (
@@ -124,11 +124,20 @@ const Sidebar: React.FC = () => {
         }`}
         onClick={toggleCollapse}
       >
-        <BsLayoutSidebarInset className="text-xl sm:fixed left-5 top-6 z-50 " />
+        <MdKeyboardDoubleArrowRight
+          className={`text-3xl sm:fixed bg-gray-200 p-1 rounded-lg left-5 top-5 z-50 transition-transform duration-500`}
+          style={{
+            transform: isCollapsed
+              ? "rotateY(180deg) "
+              : "rotateY(0deg) ",
+            perspective: "500px",
+          }}
+        />
       </div>
+
       <div className="relative">
         <div className="flex items-center justify-between p-3 rounded-md cursor-pointer">
-          <div className="flex items-center h-10 ">
+          <div className="flex items-center h-10">
             <Avatar className={`${isCollapsed ? "h-6 w-6" : "h-8 w-8"}`}>
               <AvatarImage src={workspaceUser?.image} alt="Workspace logo" />
               <AvatarFallback />
@@ -210,11 +219,13 @@ const Sidebar: React.FC = () => {
             sidebarItems.map((item, index) => (
               <div
                 key={index}
-                className={`flex items-center cursor-pointer ${isCollapsed? 'p-2 mt-1':''} ${
+                className={`flex items-center cursor-pointer ${
+                  isCollapsed ? "p-2 mt-1" : ""
+                } ${
                   activeRoute === item.href
                     ? "border-l-4 border-black dark:border-gray-300"
                     : "hover:border-l-4 border-transparent"
-                }`} 
+                }`}
                 onClick={() => handleRouteChange(item.href)}
               >
                 <div className="flex items-center">

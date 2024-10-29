@@ -16,7 +16,7 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
     <div className="relative">
       <button
         onClick={() => setShowDropdown(!showDropdown)}
-        className="flex items-center px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="flex items-center px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
       >
         <FilterIcon className="w-5 h-5 mr-2 text-gray-600 dark:text-gray-300" />
         Filter

@@ -29,11 +29,11 @@ export default function Members() {
   );
 
   return (
-    <div className="flex h-full overflow-hidden">
-      <main className="flex-1 p-6 bg-gray-100 dark:bg-gray-900">
+    <div className="flex h-full overflow-hidden ml-3">
+      <main className="flex-1 pl-6 sm:pl-1 bg-gray-100 dark:bg-gray-900">
         <header className="mb-4 flex flex-col sticky top-0 z-20 ">
-          <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-bold text-gray-600 dark:text-gray-200">
+          <div className="flex flex-col sm:flex-row justify-between items-center">
+            <h1 className="text-2xl ml-1 font-bold text-gray-600 dark:text-gray-200">
               Members
             </h1>
             <div className="relative">
@@ -42,13 +42,13 @@ export default function Members() {
                 placeholder="Search here..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-full w-64 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400"
+                className="px-4 py-2 border outline-none border-gray-300 dark:border-gray-600 rounded-full w-64 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400"
                 aria-label="Search Members"
               />
-              <FiSearch className="absolute right-3 top-2.5 text-gray-600 dark:text-gray-400" />
+              <FiSearch className="absolute hidden sm:block right-3 top-2.5 text-gray-600 dark:text-gray-400" />
             </div>
           </div>
-          <div className="mt-2">
+          <div className="hidden sm:block mt-2">
             <table className="w-full bg-gray-300 dark:bg-gray-700 rounded-lg">
               <thead className="sticky top-0 z-10">
                 <tr>
@@ -88,9 +88,9 @@ export default function Members() {
                   {filteredMembers.map((member) => (
                     <tr
                       key={member._id}
-                      className="border-b dark:border-gray-600"
+                      className="border-b dark:border-gray-600 sm:table-row"
                     >
-                      <td className="p-4 flex items-center">
+                      <td className="p-4 flex flex-col items-start sm:flex-row sm:items-center">
                         <Image
                           src={
                             member.image &&
@@ -105,17 +105,31 @@ export default function Members() {
                           height={40}
                           className="rounded-full mr-4"
                         />
-                        <span className="text-gray-800 dark:text-gray-200">
-                          {member.firstName} {member.lastName}
-                        </span>
+                        <div className="text-gray-800 dark:text-gray-200">
+                          <span>
+                            {member.firstName} {member.lastName}
+                          </span>
+                          <div className="flex flex-col sm:hidden mt-2">
+                            <span>{member.email}</span>
+                            <span>{`workspaces: ${
+                              member.activeWorkspace.length || 0
+                            }`}</span>
+                            <div className="mt-2">
+                              <StatusButton
+                                initialStatus={member.isBlocked}
+                                memberId={member._id}
+                              />
+                            </div>
+                          </div>
+                        </div>
                       </td>
-                      <td className="p-4 text-gray-800 dark:text-gray-200">
+                      <td className="p-4 text-gray-800 dark:text-gray-200 hidden sm:table-cell">
                         {member.email}
                       </td>
-                      <td className="p-4 text-gray-800 dark:text-gray-200">
+                      <td className="p-4 text-gray-800 dark:text-gray-200 hidden sm:table-cell">
                         {`workspaces: ${member.activeWorkspace.length || 0}`}
                       </td>
-                      <td className="p-4">
+                      <td className="p-4 hidden sm:table-cell">
                         <StatusButton
                           initialStatus={member.isBlocked}
                           memberId={member._id}

@@ -59,11 +59,11 @@ export default function WorkspaceDetails() {
       <Link href="/admin/workspace">
         <MdOutlineKeyboardDoubleArrowLeft
           size={32}
-          className="text-gray-500 hover:text-gray-700 transition-colors duration-300 cursor-pointer"
+          className="text-gray-500  ml-8 hover:text-gray-700 transition-colors duration-300 cursor-pointer"
           title="Back to Workspace"
         />
       </Link>
-    <div className="rounded-lg p-8 transition-all duration-300 max-h-[80vh] overflow-y-auto">
+    <div className="rounded-lg ml-10 pt-6 sm:p-8 transition-all duration-300 max-h-[80vh] overflow-y-auto">
       {workspace ? (
         <div>
           <div className="flex flex-col md:flex-row items-start justify-between mb-6">
