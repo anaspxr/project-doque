@@ -50,7 +50,7 @@ const initialState: TasksState = {
   currentSpace: null,
   lists: [],
   loading: {
-    getSpaceDetails: false,
+    getSpaceDetails: true,
     createList: false,
     updateList: false,
     deleteList: false,

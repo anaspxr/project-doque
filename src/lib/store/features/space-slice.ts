@@ -26,7 +26,7 @@ interface SpaceState {
 const initialState: SpaceState = {
   spaces: [],
   loadingSpaces: {
-    getSpaces: false,
+    getSpaces: true,
     updateSpace: false,
     deleteSpace: false,
     createSpace: false,

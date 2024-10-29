@@ -61,7 +61,7 @@ export default function AssignTaskToMembers({
   }, [workSpaceId]);
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 min-h-28">
       <div className="flex gap-2 items-center">
         <p>Members</p>
         <Popover open={open} onOpenChange={setOpen}>
@@ -141,7 +141,7 @@ export default function AssignTaskToMembers({
                   />
                   <AvatarFallback />
                 </Avatar>
-                <p className="text-xs text-zinc-700">
+                <p className="text-xs text-zinc-700 min-h-2">
                   {members.find((m) => member === m.user?._id)?.user.firstName}
                 </p>
               </div>

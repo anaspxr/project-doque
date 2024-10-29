@@ -5,6 +5,7 @@ import { NewSpaceButton } from "./new-space-button";
 import { useAppSelector } from "@/lib/store/hooks";
 import HandleLoading from "../ui/handle-loading";
 import { Button } from "../ui/button";
+import SpaceCardSkeleton from "./space-card-skeleton";
 
 export default function DisplaySpaceCards() {
   const { spaces, error, loadingSpaces } = useAppSelector(
@@ -21,15 +22,23 @@ export default function DisplaySpaceCards() {
           </Button>
         </NewSpaceButton>
       </div>
-      <HandleLoading loading={loadingSpaces.getSpaces} error={error.getSpaces}>
-        {spaces && (
-          <div className="grid grid-cols-3 gap-4">
-            {spaces.map((s) => (
+      <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-4">
+        <HandleLoading
+          loadingComponent={
+            <>
+              <SpaceCardSkeleton />
+              <SpaceCardSkeleton />
+            </>
+          }
+          loading={loadingSpaces.getSpaces}
+          error={error.getSpaces}>
+          {spaces.map((s) => (
+            <>
               <SpaceCard space={s} key={s._id} />
-            ))}
-          </div>
-        )}
-      </HandleLoading>
+            </>
+          ))}
+        </HandleLoading>
+      </div>
     </>
   );
 }

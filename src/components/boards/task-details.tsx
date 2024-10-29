@@ -30,6 +30,7 @@ import PrioritySelector from "./task-form/priority-selector";
 import StatusSelector from "./task-form/status-selector";
 import moment from "moment";
 import { XIcon } from "lucide-react";
+import TaskDetailsSkeleton from "./task-details-skeleton";
 
 export default function TaskDetails({
   taskId,
@@ -39,7 +40,7 @@ export default function TaskDetails({
   listId: string;
 }) {
   const [data, setData] = useState<Task | null>(null);
-  const [initialLoading, setInitialLoading] = useState(true);
+  const [taskDetailsLoading, setInitialLoading] = useState(true);
   const [titleEditOpen, setTitleEditOpen] = useState(false);
   const [values, setValues] = useState<TaskFormValues | null>(null);
 
@@ -207,7 +208,7 @@ export default function TaskDetails({
       onClick={handleClickOutside}
       className="fixed bg-black top-0 left-0 h-screen w-screen bg-opacity-50 z-50">
       <div className="absolute w-full h-full flex justify-center items-center">
-        {initialLoading && <p className="text-white">Loading...</p>}
+        {taskDetailsLoading && <TaskDetailsSkeleton />}
         {data && (
           <Card className="task-details-section overflow-hidden sm:w-[600px]">
             <div
@@ -220,7 +221,7 @@ export default function TaskDetails({
                 title="Close"
                 size="icon"
                 variant="ghost"
-                className="hover:bg-black hover:bg-opacity-20 p-1 h-8 w-8"
+                className="hover:bg-black hover:bg-opacity-20 text-zinc-700 dark:text-zinc-700 dark:hover:text-black dark:hover:bg-opacity-20 p-1 h-8 w-8"
                 onClick={() => router.push(pathname)}>
                 <XIcon className="" />
               </Button>
@@ -231,7 +232,7 @@ export default function TaskDetails({
                 <CardTitle className="flex gap-x-4 items-center">
                   <div onClick={() => setTitleEditOpen(true)}>
                     {!titleEditOpen && (
-                      <h2 className="flex items-center cursor-text justify-between gap-2 min-w-40 hover:border rounded-md px-3 py-1">
+                      <h2 className="flex items-center cursor-text justify-between gap-2 min-w-40 hover:border rounded-md px-3 py-2">
                         {values?.title}
                         <CiEdit className="text-zinc-800 flex-shrink-0 dark:text-zinc-200" />
                       </h2>
