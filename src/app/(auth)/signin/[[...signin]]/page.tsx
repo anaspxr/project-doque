@@ -25,14 +25,13 @@ export default function Login() {
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
   const error = useSelector((state: RootState) => state.user.error);
-  const loading = useSelector((state: RootState) => state.user.loading);
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     dispatch(clearMessages());
-
+    setLoading(true);
     const result = await dispatch(loginUser({ email, password }));
-
     if (result.payload?.statusCode === 200) {
       router.push("/u/home");
     }
