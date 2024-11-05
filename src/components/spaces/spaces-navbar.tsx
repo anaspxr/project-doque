@@ -12,7 +12,7 @@ export default function Navbar() {
   const { currentSpace } = useAppSelector((state) => state.tasks);
 
   return (
-    <div className="flex sm:ml-2 my-2 ml-4 mr-1 rounded-md justify-between h-12 shadow-sm bg-white sm:px-4 items-center dark:bg-darkBg ">
+    <div className="flex sm:ml-2 my-2 ml-4 mr-1 px-2 rounded-md justify-between h-12 shadow-sm bg-white sm:px-4 items-center dark:bg-darkBg ">
       <div className="flex items-center">
         <SpacesMenu />
       </div>

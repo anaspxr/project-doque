@@ -12,6 +12,7 @@ import {
 import { useParams } from "next/navigation";
 import { DropdownMenuArrow } from "@radix-ui/react-dropdown-menu";
 import { useAppSelector } from "@/lib/store/hooks";
+import { RiExpandUpDownLine } from "react-icons/ri";
 
 export default function SpacesMenu() {
   const { workSpaceId, spaceId }: { workSpaceId: string; spaceId: string } =
@@ -28,7 +29,7 @@ export default function SpacesMenu() {
         <>
           <Link
             href={`/w/${workSpaceId}/spaces`}
-            className="pl-4 pr-1 hidden sm:inline-block text-xs">
+            className="pl-4 pr-1 hidden sm:inline-block -ml-4 text-xs">
             <Button variant="ghost">Spaces</Button>
           </Link>
           <span className="hidden sm:inline">{">"}</span>
@@ -40,7 +41,12 @@ export default function SpacesMenu() {
             className="ring-0 border-0 focus-visible:ring-offset-0 focus-visible:ring-0"
             asChild>
             <span className="pl-4 pr-1 inline-block -ml-4 text-xs">
-              <Button variant="ghost">{spaceDetails?.name || "Spaces"}</Button>
+              <Button variant="ghost" className="flex gap-2 justify-between">
+                <span className="max-w-20 whitespace-nowrap text-ellipsis overflow-hidden">
+                  {spaceDetails?.name || "Spaces"}
+                </span>
+                <RiExpandUpDownLine className="text-lg" />
+              </Button>
             </span>
           </DropdownMenuTrigger>
 

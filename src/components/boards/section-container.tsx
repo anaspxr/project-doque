@@ -119,13 +119,14 @@ export default function SectionContainer({
     <div
       style={style}
       ref={setNodeRef}
-      className={`sm:w-64 w-40 h-[600px] flex-shrink-0 p-2 rounded-md cursor-default shadow-sm border overflow-y-auto bg-white dark:bg-zinc-900
+      className={`relative sm:w-64 w-40 h-[600px]  flex-shrink-0 p-2 rounded-md cursor-default shadow-sm border overflow-y-auto bg-white dark:bg-zinc-900
        ${isDragging && !isOverLay && "opacity-50"} `}
       {...attributes}>
       <div className="flex gap-2 cursor-pointer" {...listeners}>
         {!editMode ? (
           <h2
             onClick={() => setEditMode(true)}
+            style={{ color: section.color, background: section.color + "1f" }}
             className="font-semibold cursor-text hover:border rounded-md px-3 py-1 ">
             {section.title}
           </h2>

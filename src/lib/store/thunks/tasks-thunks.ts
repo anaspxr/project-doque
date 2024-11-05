@@ -56,6 +56,7 @@ export const createList = createAsyncThunk<
   "tasks/createList",
   async ({ spaceId, listData, onSuccess }, { rejectWithValue }) => {
     try {
+      if (!listData.color) listData.color = "#03a9f4";
       const { data } = await axiosInstance.post(
         `/space/${spaceId}/lists`,
         listData
@@ -64,7 +65,7 @@ export const createList = createAsyncThunk<
       const newList = {
         id: data.data._id,
         title: listData.name,
-        color: listData.color,
+        color: listData.color || "#03a9f4",
       };
       return { newList };
     } catch (error) {
