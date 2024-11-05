@@ -3,10 +3,10 @@
 import React from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { useAppSelector } from "@/lib/store/hooks";
-import ProjectCard from "./project-card";
 import Cookies from "js-cookie";
 import HandleLoading from "../ui/handle-loading";
 import { Skeleton } from "../ui/skeleton";
+import WorkspaceCard from "./workspace-card";
 
 const loadingCards = [1, 2, 3];
 
@@ -36,7 +36,7 @@ export default function MyWorkSpace() {
             ))}>
             <>
               {usersWorkSpaces.map(({ WorkspaceId }, index) => (
-                <ProjectCard key={index} workSpaceId={WorkspaceId} />
+                <WorkspaceCard key={index} workSpaceId={WorkspaceId} />
               ))}
               {!loading && usersWorkSpaces.length < 2 && (
                 <div className="w-[250px] h-36 rounded-lg bg-white dark:bg-zinc-900 dark:text-white dark:hover:bg-zinc-800 flex justify-center items-center hover:scale-105 hover:bg-purple-100">

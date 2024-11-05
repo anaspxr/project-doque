@@ -3,8 +3,8 @@
 import React from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { useAppSelector } from "@/lib/store/hooks";
-import ProjectCard from "./project-card";
 import Cookies from "js-cookie";
+import WorkspaceCard from "./workspace-card";
 
 export default function GuestWorkSpaces() {
   const [carouselRef] = useEmblaCarousel({ loop: false });
@@ -29,7 +29,7 @@ export default function GuestWorkSpaces() {
             <div ref={carouselRef} className="overflow-hidden">
               <div className="flex py-4 ml-4">
                 {guestWorkSpaces.map(({ WorkspaceId }, index) => (
-                  <ProjectCard key={index} workSpaceId={WorkspaceId} />
+                  <WorkspaceCard key={index} workSpaceId={WorkspaceId} />
                 ))}
               </div>
             </div>

@@ -12,8 +12,13 @@ import {
 import { axiosErrorCatch } from "@/utils/axiosErrorCatch";
 import HandleLoading from "../ui/handle-loading";
 import Link from "next/link";
+import WorkSpaceCardSkeleton from "./workspace-card-skeleton";
 
-export default function ProjectCard({ workSpaceId }: { workSpaceId: string }) {
+export default function WorkspaceCard({
+  workSpaceId,
+}: {
+  workSpaceId: string;
+}) {
   const [workSpace, setWorkSpace] = useState<{
     name: string;
     createdAt: string;
@@ -42,21 +47,14 @@ export default function ProjectCard({ workSpaceId }: { workSpaceId: string }) {
   return (
     <Link
       href={`/w/${workSpaceId}/dashboard`}
-      className="shrink-0 basis-[120px] sm:basis-[200px] md:basis-[250px] mr-4 mb-4"
-    >
-      <Card className="w-[160px] sm:w-[200px] md:w-[250px]  h-full shadow-lg hover:shadow-xl
+      className="shrink-0 basis-[120px] sm:basis-[200px] md:basis-[250px] mr-4 mb-4">
+      <Card
+        className="w-[160px] sm:w-[200px] md:w-[250px]  h-full min-h-40 shadow-lg hover:shadow-xl
        bg-gradient-to-br from-[#349ca25f] via-white to-[#C4DBF6] hover:scale-105 transition-transform rounded-lg border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:from-gray-800 dark:via-gray-700 dark:to-gray-900">
         <HandleLoading
           error={error}
           loading={loading}
-          loadingComponent={
-            <div className="flex items-center h-full justify-center">
-              <p className="text-gray-600 dark:text-gray-400">
-                Loading space details...
-              </p>
-            </div>
-          }
-        >
+          loadingComponent={<WorkSpaceCardSkeleton />}>
           {workSpace && (
             <CardHeader>
               <CardTitle className="text-base font-semibold text-gray-800 dark:text-gray-100 mb-1">
