@@ -43,24 +43,23 @@ export default function ResetPassword() {
     }, [dispatch]);
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen px-4 py-6 bg-gray-100 dark:bg-[#353535] sm:px-6 lg:px-8">
-            <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg w-full max-w-md dark:bg-[#1F1A30]">
+        <div className="flex flex-col items-center justify-center min-h-screen px-4 py-6 bg-gray-100 sm:px-6 lg:px-8">
+            <div className="bg-gradient-to-r from-white via-[#dbf7ff] p-6 sm:p-8 rounded-2xl shadow-lg w-full max-w-md">
                 <div className="flex justify-center mb-6">
                     <div className="text-center font-bold text-3xl">
-                        <span className="bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent text-2xl font-bold dark:text-white">
+                        <span className="bg-black bg-clip-text text-transparent text-2xl font-bold">
                             DO
                         </span>
-                        <span className="text-black text-2xl dark:text-gray-500 font-bold">QUE</span>
+                        <span className="text-black text-2xl font-bold">QUE</span>
                     </div>
                 </div>
 
                 <h1 className="text-xl sm:text-2xl font-bold text-center mb-4 
-               bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent 
-               dark:text-white">
+               bg-black bg-clip-text text-transparent ">
                     Reset Password
                 </h1>
 
-                <p className="text-sm sm:text-base text-gray-600 text-center mb-6 dark:text-gray-400">
+                <p className="text-sm sm:text-base text-gray-600 text-center mb-6">
                     Enter your new password below.
                 </p>
 
@@ -81,7 +80,7 @@ export default function ResetPassword() {
                                 setNewPassword(e.target.value);
                                 dispatch(clearMessages());
                             }}
-                            className="block w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-300 dark:bg-[#383150] dark:text-white"
+                            className="block w-full px-4 py-3 pl-10 border bg-white text-black border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#90d7ef] transition duration-300"
                             required
                         />
                         <button
@@ -104,7 +103,7 @@ export default function ResetPassword() {
                                 setConfirmPassword(e.target.value);
                                 dispatch(clearMessages());
                             }}
-                            className="block w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-300 dark:bg-[#383150] dark:text-white"
+                            className="block w-full px-4 py-3 pl-10 border bg-white text-black border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#90d7ef] transition duration-300"
                             required
                         />
                         <button
@@ -119,11 +118,11 @@ export default function ResetPassword() {
 
                     <button
                         type="submit"
-                        className="w-full bg-green-500 text-base sm:text-xl text-white font-semibold 
+                        className="w-full bg-gradient-to-r from-white via-[#bbeeff] to-white text-base sm:text-xl text-black border border-black font-semibold 
              px-4 py-3 rounded-2xl shadow-md 
-             hover:bg-gradient-to-r hover:from-green-500 hover:to-green-700 
-             focus:outline-none focus:ring-2 focus:ring-green-500 
-             transition duration-300"
+             hover:border-[#90d7ef] hover:bg-[#9fd3e4]
+             hover:text-black focus:outline-none focus:ring-2 focus:ring-[#90d7ef]
+             transition duration-300 ease-in-out"
                         disabled={loading}
                     >
                         {loading ? "Resetting..." : "Reset Password"}
