@@ -75,23 +75,23 @@ export default function Signup() {
   }, [dispatch]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-100 dark:bg-[#353535]">
+    <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-100">
       <main className="flex flex-col items-center justify-center w-full flex-1 px-4 text-center">
-        <div className="bg-white rounded-2xl shadow-2xl flex flex-col md:flex-row w-full max-w-4xl dark:bg-[#1F1A30]">
+        <div className="bg-white rounded-2xl shadow-2xl flex flex-col md:flex-row w-full max-w-4xl">
           <div className="w-full md:w-1/2 p-10 flex flex-col justify-between">
             <div className="mb-6 flex items-center justify-start">
-              <span className="bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent text-2xl font-bold dark:text-white">
+              <span className="bg-black bg-clip-text text-transparent text-2xl font-bold">
                 DO
               </span>
-              <span className="text-black text-2xl dark:text-gray-500 font-bold">
+              <span className="text-black text-2xl font-bold">
                 QUE
               </span>
             </div>
             <div>
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent mb-2 dark:text-white">
+              <h2 className="text-3xl font-bold bg-black bg-clip-text text-transparent mb-2">
                 Create Account
               </h2>
-              <div className="border-2 w-10 border-green-500 inline-block mb-2 dark:border-white"></div>
+              <div className="border-2 w-10 border-black inline-block mb-2"></div>
               <p className="mb-6 text-gray-500">
                 Please fill in the details below to create your account.
               </p>
@@ -109,12 +109,12 @@ export default function Signup() {
               {({ isSubmitting }) => (
                 <Form className="flex flex-col space-y-4">
                   <div className="relative">
-                    <AiOutlineUser className="absolute left-3 top-3 text-gray-400" />
+                    <AiOutlineUser className="absolute left-3 top-4 text-gray-400" />
                     <Field
                       type="text"
                       name="firstName"
                       placeholder="First Name"
-                      className="block w-full px-4 py-3 pl-10 border border-gray-300 rounded-md shadow-md focus:outline-none focus:border-green-500 focus:ring-green-500 dark:bg-[#383150] dark:text-white"
+                      className="block w-full px-4 py-3 pl-10 border border-gray-300 rounded-md shadow-md focus:outline-none bg-white text-black focus:border-[#E0F7FF] focus:ring-[#E0F7FF]"
                     />
                     <ErrorMessage
                       name="firstName"
@@ -123,12 +123,12 @@ export default function Signup() {
                     />
                   </div>
                   <div className="relative">
-                    <AiOutlineUser className="absolute left-3 top-3 text-gray-400" />
+                    <AiOutlineUser className="absolute left-3 top-4 text-gray-400" />
                     <Field
                       type="text"
                       name="lastName"
                       placeholder="Last Name"
-                      className="block w-full px-4 py-3 pl-10 border border-gray-300 rounded-md shadow-md focus:outline-none focus:border-green-500 focus:ring-green-500 dark:bg-[#383150] dark:text-white"
+                      className="block w-full px-4 py-3 pl-10 border border-gray-300 bg-white text-black rounded-md shadow-md focus:outline-none focus:border-[#E0F7FF] focus:ring-[#E0F7FF]"
                     />
                     <ErrorMessage
                       name="lastName"
@@ -137,12 +137,12 @@ export default function Signup() {
                     />
                   </div>
                   <div className="relative">
-                    <AiOutlineMail className="absolute left-3 top-3 text-gray-400" />
+                    <AiOutlineMail className="absolute left-3 top-4 text-gray-400" />
                     <Field
                       type="email"
                       name="email"
                       placeholder="Enter your email"
-                      className="block w-full px-4 py-3 pl-10 border border-gray-300 rounded-md shadow-md focus:outline-none focus:border-green-500 focus:ring-green-500 dark:bg-[#383150] dark:text-white"
+                      className="block w-full px-4 py-3 pl-10 border border-gray-300 bg-white text-black rounded-md shadow-md focus:outline-none focus:border-[#E0F7FF] focus:ring-[#E0F7FF]"
                     />
                     <ErrorMessage
                       name="email"
@@ -151,15 +151,15 @@ export default function Signup() {
                     />
                   </div>
                   <div className="relative">
-                    <AiOutlineLock className="absolute left-3 top-3 text-gray-400" />
+                    <AiOutlineLock className="absolute left-3 top-4 text-gray-400" />
                     <Field
                       type={showPassword ? "text" : "password"}
                       name="password"
                       placeholder="Enter your password"
-                      className="block w-full px-4 py-3 pl-10 border border-gray-300 rounded-md shadow-md focus:outline-none focus:border-green-500 focus:ring-green-500 dark:bg-[#383150] dark:text-white"
+                      className="block w-full px-4 py-3 pl-10 border border-gray-300 bg-white text-black rounded-md shadow-md focus:outline-none focus:border-[#E0F7FF] focus:ring-[#E0F7FF]"
                     />
                     <div
-                      className="absolute right-3 top-3 cursor-pointer text-gray-400"
+                      className="absolute right-3 top-4 cursor-pointer text-gray-400"
                       onClick={togglePasswordVisibility}>
                       {showPassword ? (
                         <AiOutlineEyeInvisible />
@@ -174,12 +174,12 @@ export default function Signup() {
                     />
                   </div>
                   <div className="relative">
-                    <AiOutlineLock className="absolute left-3 top-3 text-gray-400" />
+                    <AiOutlineLock className="absolute left-3 top-4 text-gray-400" />
                     <Field
                       type={showPassword ? "text" : "password"}
                       name="confirmPassword"
                       placeholder="Confirm password"
-                      className="block w-full px-4 py-3 pl-10 border border-gray-300 rounded-md shadow-md focus:outline-none focus:border-green-500 focus:ring-green-500 dark:bg-[#383150] dark:text-white"
+                      className="block w-full px-4 py-3 pl-10 border border-gray-300 bg-white text-black rounded-md shadow-md focus:outline-none focus:border-[#E0F7FF] focus:ring-[#E0F7FF]"
                     />
                     <ErrorMessage
                       name="confirmPassword"
@@ -189,26 +189,25 @@ export default function Signup() {
                   </div>
                   {(successMessage || error) && (
                     <div
-                      className={`text-center mb-4 ${
-                        successMessage ? "text-green-600" : "text-red-600"
-                      }`}>
+                      className={`text-center mb-4 ${successMessage ? "text-green-600" : "text-red-600"
+                        }`}>
                       {successMessage || error}
                     </div>
                   )}
                   <button
                     type="submit"
-                    className={`w-full border-2 border-green-500 text-green-500 rounded-md px-12 py-3 font-semibold 
-              hover:bg-gradient-to-r hover:from-green-500 hover:to-green-700 
-              hover:text-white focus:outline-none focus:ring-2 focus:ring-green-500 
+                    className={`w-full border-2 border-gray-600 text-black rounded-xl px-12 py-3 font-semibold 
+              hover:bg-[#E0F7FF]  
+              hover:text-black focus:outline-none focus:ring-2
               ${isSubmitting ? "opacity-50 cursor-not-allowed" : ""}`}
                     disabled={isSubmitting}>
                     {isSubmitting ? "Registering..." : "Register"}
                   </button>
-                  <div className="mt-4 text-center md:hidden dark:text-white">
+                  <div className="mt-4 text-center md:hidden">
                     <p className="text-gray-500">Already have an account?</p>
                     <Link
                       href="/signin"
-                      className="text-gray-700 hover:border-b border-gray-700 font-semibold dark:text-white dark:hover:border-white">
+                      className="text-gray-700 hover:border-b border-gray-700 font-semibold">
                       Sign In
                     </Link>
                   </div>
@@ -217,7 +216,7 @@ export default function Signup() {
             </Formik>
           </div>
 
-          <div className="hidden sm:block w-full md:w-1/2 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-tr-2xl rounded-br-2xl flex-col justify-center items-center p-10 space-y-6 relative dark:bg-[#1F1A30]">
+          <div className="hidden sm:block w-full md:w-1/2 bg-gradient-to-r from-white via-[#bbeeff] to-white text-black rounded-tr-2xl rounded-br-2xl flex-col justify-center items-center p-10 space-y-6 relative">
             <h2 className="text-2xl font-bold text-center mt-12">
               Welcome to Doque!
             </h2>
@@ -233,7 +232,7 @@ export default function Signup() {
             </p>
             <Link
               href="/signin"
-              className="border-2 border-white rounded-full px-12 py-2 inline-block font-semibold hover:bg-white hover:text-green-500 dark:hover:text-black">
+              className="border-2 border-black rounded-full px-12 py-2 inline-block font-semibold hover:bg-[#E0F7FF] hover:text-black">
               Sign In
             </Link>
           </div>

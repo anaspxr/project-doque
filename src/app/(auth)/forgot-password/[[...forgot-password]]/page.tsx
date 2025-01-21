@@ -35,45 +35,44 @@ export default function ForgotPassword() {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen px-4 py-6 bg-gray-100 dark:bg-[#353535] sm:px-6 lg:px-8">
-            <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg w-full max-w-md dark:bg-[#1F1A30]">
+        <div className="flex flex-col items-center justify-center min-h-screen px-4 py-6 bg-gray-100 sm:px-6 lg:px-8">
+            <div className="bg-gradient-to-r from-white via-[#dbf7ff] p-6 sm:p-8 rounded-2xl shadow-lg w-full max-w-md">
                 <div className="flex justify-center mb-6">
                     <div className="text-center font-bold text-3xl">
-                        <span className="bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent text-2xl font-bold dark:text-white">
+                        <span className="bg-black bg-clip-text text-transparent text-2xl font-bold">
                             DO
                         </span>
-                        <span className="text-black text-2xl dark:text-gray-500 font-bold">QUE</span>
+                        <span className="text-black text-2xl font-bold">QUE</span>
                     </div>
                 </div>
                 <h1 className="text-xl sm:text-2xl font-bold text-center mb-4 
-               bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent 
-               dark:text-white">
+               bg-black bg-clip-text text-transparent">
                     Forgot Password?
                 </h1>
 
-                <p className="text-sm sm:text-base text-gray-600 text-center mb-6 dark:text-gray-400">
+                <p className="text-sm sm:text-base text-gray-600 text-center mb-6">
                     Enter your email to receive a link to reset your password.
                 </p>
                 {message && <p className={`text-center mb-4 ${error ? "text-red-600" : "text-green-600"}`}>{message}</p>}
                 <form onSubmit={handleForgotPassword} className="space-y-6 sm:space-y-8">
                     <div className="relative">
-                        <AiOutlineMail className="absolute left-3 top-4 text-[#5E6061]" />
+                        <AiOutlineMail className="absolute left-3 top-5 text-[#5E6061]" />
                         <input
                             type="email"
                             value={forgetEmail || email}
                             onChange={handleEmailChange}
                             placeholder="Enter your email"
-                            className="block w-full px-4 py-3 sm:py-4 pl-10 border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-300 ease-in-out dark:bg-[#383150] dark:text-white"
+                            className="block w-full px-4 py-3 sm:py-4 pl-10 border border-gray-300 bg-white text-black rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#90d7ef] transition duration-300 ease-in-out"
                             required
                             aria-label="Email address"
                         />
                     </div>
                     <button
                         type="submit"
-                        className="w-full border-2 border-green-500 text-green-500 text-base sm:text-xl font-semibold 
+                        className="w-full border-2 bg-gradient-to-r from-white via-[#bbeeff] to-white border-black text-black text-base sm:text-xl font-semibold 
              px-4 py-2 sm:py-3 rounded-2xl shadow-md 
-             hover:bg-gradient-to-r hover:from-green-500 hover:to-green-700 
-             hover:text-white focus:outline-none focus:ring-2 focus:ring-green-500 
+             hover:border-[#90d7ef] hover:bg-[#9fd3e4]
+             hover:text-black focus:outline-none focus:ring-2 focus:ring-[#90d7ef]
              transition duration-300 ease-in-out"
                         disabled={loading}
                         aria-label="Send reset link"
@@ -82,11 +81,11 @@ export default function ForgotPassword() {
                     </button>
                 </form>
                 <div className="flex justify-center items-center mt-6 sm:mt-8 text-xs sm:text-sm text-gray-700">
-                    <Link href="/signup" className="text-[#242425] hover:underline dark:text-gray-300">
+                    <Link href="/signup" className="text-[#242425] hover:underline">
                         Create New Account
                     </Link>
-                    <span className="mx-2 sm:mx-4 text-gray-600 dark:text-gray-300">|</span>
-                    <Link href="/signin" className="text-[#242425] hover:underline dark:text-gray-300">
+                    <span className="mx-2 sm:mx-4 text-gray-600">|</span>
+                    <Link href="/signin" className="text-[#242425] hover:underline">
                         Login
                     </Link>
                 </div>
